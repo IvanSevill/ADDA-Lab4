@@ -1,0 +1,20 @@
+\ Model _copy
+\ LP format - for model browsing. Use MPS format to capture full model detail.
+Minimize
+ 
+Subject To
+ a0: x_0_0 + x_0_1 >= 70
+ a1: x_1_0 + x_1_1 >= 50
+ a2: x_2_0 + x_2_1 >= 25
+ b0: x_0_0 + x_1_0 + x_2_0 <= 100
+ b1: x_0_1 + x_1_1 + x_2_1 <= 30
+Bounds
+ x_0_0 free
+ x_0_1 free
+ x_1_0 free
+ x_1_1 free
+ x_2_0 free
+ x_2_1 free
+Generals
+ x_0_0 x_0_1 x_1_0 x_1_1 x_2_0 x_2_1
+End
