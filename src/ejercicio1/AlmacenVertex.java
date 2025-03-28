@@ -20,18 +20,17 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 	}
 
 	public static AlmacenVertex initial() {
-	    List<Set<Integer>> productosIniciales = new ArrayList<>();
-	    List<Integer> espacios = new ArrayList<>();
+		List<Set<Integer>> productosIniciales = new ArrayList<>();
+		List<Integer> espacios = new ArrayList<>();
 
-	    for (int i = 0; i < DatosAlmacenes.getNumAlmacenes(); i++) {
-	        productosIniciales.add(new HashSet<>());
-	        espacios.add(DatosAlmacenes.getMetrosCubicosAlmacen(i));
+		for (int i = 0; i < DatosAlmacenes.getNumAlmacenes(); i++) {
+			productosIniciales.add(new HashSet<>());
+			espacios.add(DatosAlmacenes.getMetrosCubicosAlmacen(i));
 
-	    }  
+		}
 
-	    return of(0, 0, productosIniciales, espacios);
+		return of(0, 0, productosIniciales, espacios);
 	}
-
 
 	public AlmacenEdge edge(Integer a) {
 		return AlmacenEdge.of(this, this.neighbor(a), a);
@@ -41,13 +40,31 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 		return indice == DatosAlmacenes.getNumProductos();
 	}
 
+
 	public List<Integer> actions() {
-		List<Integer> ls = new ArrayList<>();
-		for (int i = -1; i < DatosAlmacenes.getNumAlmacenes(); i++) {
-			ls.add(i);
+		if (this.indice >= DatosAlmacenes.getNumProductos()) {
+			return List.of(); // No hay más productos que asignar
 		}
-		return ls;
+
+		List<Integer> acciones = new ArrayList<>();
+		int productoActual = this.indice;
+		int volumenProducto = DatosAlmacenes.getMetrosCubicosProducto(productoActual);
+
+		for (int i = 0; i < DatosAlmacenes.getNumAlmacenes(); i++) {
+			if (espacioDisponible.get(i) >= volumenProducto) {
+				boolean incompatible = productosAlmacenados.get(i).stream()
+						.anyMatch(p -> DatosAlmacenes.sonIncompatibles(p, productoActual)
+								|| DatosAlmacenes.sonIncompatibles(productoActual, p));
+				if (!incompatible) {
+					acciones.add(i);
+				}
+			}
+		}
+
+		acciones.add(-1); // opción de no almacenar el producto
+		return acciones;
 	}
+
 
 	public AlmacenVertex neighbor(Integer action) {
 

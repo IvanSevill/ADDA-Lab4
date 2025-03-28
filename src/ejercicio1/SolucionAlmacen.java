@@ -30,18 +30,15 @@ public class SolucionAlmacen {
 
 	private SolucionAlmacen(List<Integer> ls) {
 		this.solucion = new HashMap<>();
-		int totalProductos = DatosAlmacenes.getNumProductos();
 
-		for (Integer i = 0; i < ls.size(); i++) {
-			if (ls.get(i) > 0) {
-				Producto producto = DatosAlmacenes.getProducto(i % totalProductos);
-				Integer almacen = i / totalProductos;
-				// Verificar si el producto ya está asignado
-				if (!solucion.containsKey(producto)) {
-					this.solucion.put(producto, almacen);
-				}
+		for (int i = 0; i < ls.size(); i++) {
+			Integer almacen = ls.get(i);
+			if (almacen != null && almacen >= 0) {
+				Producto producto = DatosAlmacenes.getProducto(i);
+				this.solucion.put(producto, almacen);
 			}
 		}
+
 		this.numproductos = solucion.size();
 	}
 

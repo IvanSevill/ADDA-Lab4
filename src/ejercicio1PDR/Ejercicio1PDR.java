@@ -26,6 +26,7 @@ public class Ejercicio1PDR {
 		Spm res = null;
 		Boolean esTerminal = problem.indice().equals(DatosAlmacenes.getNumProductos());
 
+		
 		if (memory.containsKey(problem)) {
 			res = memory.get(problem);
 
@@ -46,43 +47,43 @@ public class Ejercicio1PDR {
 				}
 
 				AlmacenVertex vecino = problem.neighbor(action); // siguiente estado
-				int incremento = action >= 0 ? 1 : 0; // si se almacena el producto, aumenta el acumulado
-				Spm s = pdr_search(vecino, acum + incremento, memory);
+				int incremento = (action >= 0) ? 1 : 0;
+				Spm subsol = pdr_search(vecino, acum + incremento, memory);
 
-				if (s != null) {
-					Spm ampliado = Spm.of(action, s.weight() + incremento);
-					soluciones.add(ampliado);
+				if (subsol != null) {
+				    Spm ampliado = Spm.of(action, subsol.weight() + incremento);
+				    soluciones.add(ampliado);
 				}
+
 			}
 
 			// Maximizar
 			res = soluciones.stream().max(Comparator.naturalOrder()).orElse(null);
-			if (res != null)
-				memory.put(problem, res);
+			if (res != null) {
+			    memory.put(problem, res);
+			}
 		}
-
+		
 		return res;
 	}
 
 	public static Double acotar(Integer acum, AlmacenVertex p, Integer a) {
-	    int incremento = (a >= 0) ? 1 : 0; // si se almacena el producto
-	    AlmacenVertex vecino = p.neighbor(a);
-	    return acum + incremento + vecino.heuristic();
+		int incremento = (a >= 0) ? 1 : 0; // si se almacena el producto
+		AlmacenVertex vecino = p.neighbor(a);
+		return acum + incremento + vecino.heuristic();
 	}
 
 	public static SolucionAlmacen getSolucion() {
-	    List<Integer> acciones = List2.empty();
-	    AlmacenVertex prob = AlmacenVertex.initial(); // Debes tener este método bien definido
-	    Spm spm = memory.get(prob);
+		List<Integer> acciones = List2.empty();
+		AlmacenVertex prob = AlmacenVertex.initial(); // Debes tener este método bien definido
+		Spm spm = memory.get(prob);
 
-	    while (spm != null && spm.a() != null) {
-	        acciones.add(spm.a());
-	        prob = prob.neighbor(spm.a());
-	        spm = memory.get(prob);
-	    }
-
-	    return SolucionAlmacen.create(acciones);
+		while (spm != null && spm.a() != null) {
+			acciones.add(spm.a());
+			prob = prob.neighbor(spm.a());
+			spm = memory.get(prob);
+		}
+		return SolucionAlmacen.create(acciones);
 	}
-
 
 }
