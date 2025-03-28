@@ -1,4 +1,4 @@
-package ejercicio1;
+package common;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -66,7 +66,7 @@ public class DatosAlmacenes {
 				productos.add(Producto.create(s));
 			}
 		}
-		toConsole();
+//		toConsole();
 	}
 	
 	public static Integer getNumProductos() {

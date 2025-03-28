@@ -1,4 +1,4 @@
-package ejercicio2;
+package common;
 
 import java.util.List;
 import java.util.Set;

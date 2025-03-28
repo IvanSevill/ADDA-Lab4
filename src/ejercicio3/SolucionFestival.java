@@ -2,75 +2,104 @@ package ejercicio3;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+
+import common.DatosFestival;
+import us.lsi.common.IntPair;
+
 import java.util.HashMap;
 
 public class SolucionFestival {
 
-    public static SolucionFestival create(List<Integer> ls) {
-        return new SolucionFestival(ls);
-    }
+	public static SolucionFestival create(List<Integer> ls) {
+		return new SolucionFestival(ls);
+	}
 
-    private Integer numAsignaciones;
-    private Map<Integer, Integer> solucion;
-    private Double costeTotal;
-    private Integer unidadesTotales;
+	private Integer numAsignaciones;
+	private List<Integer> solucion;
+	private Double costeTotal;
+	private Integer unidadesTotales;
 
-    private SolucionFestival(List<Integer> ls) {
-    	//TODO
-    }
+	private SolucionFestival(List<Integer> ls) {
+		numAsignaciones = ls.size();
+		this.solucion = ls;
+		costeTotal = 0.;
+		unidadesTotales = 0;
 
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder("Resumen de asignaciones:\n");
+		for (int i = 0; i < DatosFestival.getNumTiposEntrada() * DatosFestival.getNumAreas(); i++) {
+			unidadesTotales += ls.get(i);
+			costeTotal += DatosFestival.getCosteAsignacion(i / DatosFestival.getNumAreas(),
+					i % DatosFestival.getNumAreas())* ls.get(i);
+		}
 
-        Map<Integer, Integer> aforoOcupadoPorArea = new HashMap<>();
-        Map<Integer, Map<Integer, Integer>> entradasPorArea = new HashMap<>();
+	}
 
-        for (Map.Entry<Integer, Integer> entry : solucion.entrySet()) {
-            Integer tipoEntrada = entry.getKey() / DatosFestival.getNumAreas();
-            Integer area = entry.getKey() % DatosFestival.getNumAreas();
-            Integer unidades = entry.getValue();
+	private String mostrarAsignaciones(List<Integer> ls) {
+		Map<Integer, Integer> sumaAreas = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> sumaProductos = new HashMap<Integer, Integer>();
+		for (int i = 0; i < DatosFestival.getNumAreas(); i++) {
+			sumaAreas.put(i, 0);
+		}
+		
+		for (int i = 0; i < DatosFestival.getNumTiposEntrada(); i++) {
+			sumaProductos.put(i, 0);
+		}
 
-            if (unidades > 0) {
-                aforoOcupadoPorArea.put(area, aforoOcupadoPorArea.getOrDefault(area, 0) + unidades);
-                entradasPorArea.computeIfAbsent(area, k -> new HashMap<>())
-                        .put(tipoEntrada, entradasPorArea.get(area).getOrDefault(tipoEntrada, 0) + unidades);
-            }
-        }
+		for (int i = 0; i < ls.size(); i++) {
+			if (ls.get(i) > 0) {
+				Integer area = i % DatosFestival.getNumAreas();
+				Integer tipo = i / DatosFestival.getNumAreas();
+				sumaAreas.put(area, sumaAreas.get(area) + ls.get(i));
+				sumaProductos.put(tipo, sumaProductos.get(tipo) + ls.get(i));
+			}
+		}
 
-        for (int i = 0; i < DatosFestival.getNumAreas(); i++) {
-            Integer aforoOcupado = aforoOcupadoPorArea.getOrDefault(i, 0);
-            if (aforoOcupado > 0) {
-                result.append(String.format("Aforo área %s: %d/%d\n",
-                        DatosFestival.getArea(i).nombre(),
-                        aforoOcupado,
-                        DatosFestival.getAforoMaximoArea(i)));
+		StringBuilder s = new StringBuilder();
 
-                entradasPorArea.getOrDefault(i, new HashMap<>()).forEach((tipoEntrada, unidades) ->
-                        result.append(String.format("Tipo de entrada %s asignadas: %d unidades\n",
-                                DatosFestival.getTipoEntrada(tipoEntrada).tipo(), unidades)
-                ));
-            }
-        }
+		for (int area = 0; area < DatosFestival.getNumAreas(); area++) {
+			Integer aforoMaximo = DatosFestival.getArea(area).aforoMaximo();
+			
+			if (sumaAreas.get(area) > 0){
+				s.append("Aforo área A" + area).append(": ").append(sumaAreas.get(area) + "/" + aforoMaximo).append("\n");
 
-        result.append(String.format("\nCoste total: %.2f\nUnidades totales: %d\n", costeTotal, unidadesTotales));
+				for (int tipo = 0; tipo < DatosFestival.getNumTiposEntrada(); tipo++) {
+					int unidades = ls.get(tipo * DatosFestival.getNumAreas() + area);
+					if (unidades > 0) {
+						s.append("Tipo de entrada T" + tipo).append(" asignadas: ").append(unidades).append(" unidades\n");
 
-        return result.toString();
-    }
+					}
+				}
+			}
+	
+		}
+		
+		s.append("\nTipos de entradas\n");
+		
+		for (int tipo = 0; tipo < DatosFestival.getNumTiposEntrada(); tipo++) {
+			s.append("Unidades T").append(tipo).append(" : ").append(sumaProductos.get(tipo)).append(" ("+DatosFestival.getCuotaMinima(tipo)+")").append("\n");
+		}
 
-    public Integer getNumAsignaciones() {
-        return numAsignaciones;
-    }
+		return s.toString();
+	}
 
-    public Map<Integer, Integer> getSolucion() {
-        return solucion;
-    }
+	@Override
+	public String toString() {
+		return mostrarAsignaciones(solucion) + "\nCosteTotal: " + costeTotal + "\nUnidadesTotales: " + unidadesTotales;
+	}
 
-    public Double getCosteTotal() {
-        return costeTotal;
-    }
+	public Integer getNumAsignaciones() {
+		return numAsignaciones;
+	}
 
-    public Integer getUnidadesTotales() {
-        return unidadesTotales;
-    }
+	public List<Integer> getSolucion() {
+		return solucion;
+	}
+
+	public Double getCosteTotal() {
+		return costeTotal;
+	}
+
+	public Integer getUnidadesTotales() {
+		return unidadesTotales;
+	}
 }

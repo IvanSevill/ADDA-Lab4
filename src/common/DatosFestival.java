@@ -1,4 +1,4 @@
-package ejercicio3;
+package common;
 
 import java.io.IOException;
 import java.util.List;
