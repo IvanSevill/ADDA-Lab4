@@ -28,7 +28,6 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 			espacios.add(DatosAlmacenes.getMetrosCubicosAlmacen(i));
 
 		}
-
 		return of(0, 0, productosIniciales, espacios);
 	}
 
@@ -40,7 +39,11 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 		return indice == DatosAlmacenes.getNumProductos();
 	}
 
-
+	/*
+	 * Diferentes almacenes en los que se puede almacenar el producto actual
+	 * teniendo en cuenta las decisiones tomadas hasta ahora guardadas en
+	 * espacioDisponible y productosAlmacenados
+	 */
 	public List<Integer> actions() {
 		if (this.indice >= DatosAlmacenes.getNumProductos()) {
 			return List.of(); // No hay más productos que asignar
@@ -65,6 +68,12 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 		return acciones;
 	}
 
+	/**
+	 * Aplica la acción de almacenar el producto en el almacén que indique action.
+	 * Sabemos que la siguiente accion tiene un indice ++, que la cantidad
+	 * almacenada aumenta en 1 si es que se guarda y que los productos almacenados y
+	 * el espacio disponible se actualizan en función de la acción tomada
+	 */
 
 	public AlmacenVertex neighbor(Integer action) {
 
@@ -79,17 +88,21 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 
 			// Añadir el producto al conjunto correspondiente del almacén
 			Set<Integer> conjuntoAlmacen = new HashSet<>(nProductosAlmacenados.get(action));
-			conjuntoAlmacen.add(indice);
+			conjuntoAlmacen.add(this.indice);
 			nProductosAlmacenados.set(action, conjuntoAlmacen);
 
 			// Actualizar el espacio disponible en ese almacén
-			int espacioRestante = nEspacioDisponible.get(action) - DatosAlmacenes.getMetrosCubicosProducto(indice);
+			int espacioRestante = nEspacioDisponible.get(action) - DatosAlmacenes.getMetrosCubicosProducto(this.indice);
 			nEspacioDisponible.set(action, espacioRestante);
 		}
 
 		return AlmacenVertex.of(nIndice, nCantidadAlmacenada, nProductosAlmacenados, nEspacioDisponible);
 	}
 
+	/*
+	 * La heuristica represnta en cuantos almacenes diferentes se puede almacenar el
+	 * producto actual teniendo en cuenta las decisiones tomadas hasta ahora
+	 */
 	public Double heuristic() {
 		int posibles = 0;
 
@@ -100,13 +113,13 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 			for (int j = 0; j < espacioDisponible.size(); j++) {
 				if (espacioDisponible.get(j) >= volumen) {
 
-					boolean compatible = productosAlmacenados.get(j).stream()
-						.noneMatch(p -> DatosAlmacenes.sonIncompatibles(p, producto)
-						              || DatosAlmacenes.sonIncompatibles(producto, p));
+					Boolean compatible = productosAlmacenados.get(j).stream()
+							.noneMatch(k -> DatosAlmacenes.sonIncompatibles(k, producto)
+									|| DatosAlmacenes.sonIncompatibles(producto, k));
 
+					// Si es compatible y cabe en el almacén, sumamos 1
 					if (compatible) {
 						posibles++;
-						break;
 					}
 				}
 			}
@@ -114,7 +127,5 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 
 		return (double) posibles;
 	}
-
-
 
 }
