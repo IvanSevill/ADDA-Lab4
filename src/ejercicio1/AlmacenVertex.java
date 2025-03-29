@@ -90,26 +90,31 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 		return AlmacenVertex.of(nIndice, nCantidadAlmacenada, nProductosAlmacenados, nEspacioDisponible);
 	}
 
-	@Override
 	public Double heuristic() {
-		Double h = 0.;
+		int posibles = 0;
 
-		if (indice < DatosAlmacenes.getNumProductos()) {
-			// Producto más pequeño que queda por colocar
-			Integer minimoVolumen = Integer.MAX_VALUE;
+		for (int i = indice; i < DatosAlmacenes.getNumProductos(); i++) {
+			int volumen = DatosAlmacenes.getMetrosCubicosProducto(i);
+			final int producto = i; // 👈 necesario para usar en lambda
 
-			for (int i = indice; i < DatosAlmacenes.getNumProductos(); i++) {
-				minimoVolumen = Math.min(minimoVolumen, DatosAlmacenes.getMetrosCubicosProducto(i));
+			for (int j = 0; j < espacioDisponible.size(); j++) {
+				if (espacioDisponible.get(j) >= volumen) {
+
+					boolean compatible = productosAlmacenados.get(j).stream()
+						.noneMatch(p -> DatosAlmacenes.sonIncompatibles(p, producto)
+						              || DatosAlmacenes.sonIncompatibles(producto, p));
+
+					if (compatible) {
+						posibles++;
+						break;
+					}
+				}
 			}
-
-			// Suma total del espacio restante en todos los almacenes
-			Integer espacioTotal = espacioDisponible.stream().mapToInt(e -> e).sum();
-
-			// Número máximo de productos (del volumen mínimo) que podrían entrar
-			h = (double) (espacioTotal / minimoVolumen);
 		}
 
-		return h;
+		return (double) posibles;
 	}
+
+
 
 }
