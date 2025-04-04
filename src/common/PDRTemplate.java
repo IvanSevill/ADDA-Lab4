@@ -7,12 +7,12 @@ import java.util.Map;
 import us.lsi.common.List2;
 import us.lsi.common.Map2;
 
-public abstract class PDRTemplate<V, E> {
+public abstract class PDRTemplate<V, S> {
 
 	protected Map<V, Spm> memory;
 	protected Integer mejorValor;
 
-	public E search() {
+	public S search() {
 		this.memory = Map2.empty();
 		this.mejorValor = initialBestValue();
 
@@ -39,7 +39,8 @@ public abstract class PDRTemplate<V, E> {
 
 			for (Integer action : actions(problem)) {
 				Double cota = acotar(acum, problem, action);
-				if (cota < mejorValor) continue;
+				if (cota < mejorValor)
+					continue;
 
 				V vecino = neighbor(problem, action);
 				int incremento = (action >= 0) ? 1 : 0;
@@ -62,13 +63,20 @@ public abstract class PDRTemplate<V, E> {
 
 	// Métodos abstractos que debes implementar en cada problema
 	protected abstract V initialVertex();
+
 	protected abstract boolean isTerminal(V v);
+
 	protected abstract List<Integer> actions(V v);
+
 	protected abstract V neighbor(V v, Integer a);
+
 	protected abstract Double acotar(Integer acum, V v, Integer a);
+
 	protected abstract Integer initialBestValue();
+
 	protected abstract Integer initialAccumulated();
-	protected abstract E buildSolution();
+
+	protected abstract S buildSolution();
 
 	public Map<V, Spm> getMemory() {
 		return memory;

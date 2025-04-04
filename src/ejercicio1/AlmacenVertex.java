@@ -54,17 +54,20 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 		int volumenProducto = DatosAlmacenes.getMetrosCubicosProducto(productoActual);
 
 		for (int i = 0; i < DatosAlmacenes.getNumAlmacenes(); i++) {
+			// Si el volumen del almacen es mayor o igual que el volumen del producto
 			if (espacioDisponible.get(i) >= volumenProducto) {
+				// ( El csv está fatal, hay que comprobar las incompatibilidades de los dos lados )
 				boolean incompatible = productosAlmacenados.get(i).stream()
 						.anyMatch(p -> DatosAlmacenes.sonIncompatibles(p, productoActual)
 								|| DatosAlmacenes.sonIncompatibles(productoActual, p));
+				// Añado esta opción porque si que es una opción valida
 				if (!incompatible) {
 					acciones.add(i);
 				}
 			}
 		}
 
-		acciones.add(-1); // opción de no almacenar el producto
+		acciones.add(-1); // opción de no almacenar el producto que está siempre
 		return acciones;
 	}
 
@@ -77,13 +80,14 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 
 	public AlmacenVertex neighbor(Integer action) {
 
-		Integer nIndice = indice + 1;
+		Integer nIndice = indice + 1; // Siempre aumento en uno el índice
 		Integer nCantidadAlmacenada = this.cantidadAlmacenada;
 		List<Set<Integer>> nProductosAlmacenados = new ArrayList<>(this.productosAlmacenados);
 		List<Integer> nEspacioDisponible = new ArrayList<>(this.espacioDisponible);
 
-		if (action >= 0) {
-			// Incrementar la cantidad almacenada
+		// Si lo almaceno en alguno de los almacenes, actualizo el resto de variables del estado
+		if (action > -1) {
+			// Incrementar la cantidad almacenada en 1
 			nCantidadAlmacenada++;
 
 			// Añadir el producto al conjunto correspondiente del almacén
@@ -100,7 +104,7 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 	}
 
 	/*
-	 * La heuristica represnta en cuantos almacenes diferentes se puede almacenar el
+	 * La heuristica represnta el NUMERO de almacenes diferentes se puede almacenar el
 	 * producto actual teniendo en cuenta las decisiones tomadas hasta ahora
 	 */
 	public Double heuristic() {
