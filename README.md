@@ -18,7 +18,6 @@ Este proyecto tiene como objetivo la resolución de problemas complejos mediante
 4. **Camino óptimo en un grafo de estaciones de tren:**
    Se debe encontrar un camino que pase por todas las estaciones de tren exactamente una vez y regrese al origen, minimizando el tiempo total de viaje y el coste del trayecto, mientras cumple con otras restricciones como satisfacción de los clientes.
 
-### Guia para resolver los ejercicios
-1. BT no puede volver a usar nodos anteriores
-2. 
-   
+### Casuistica problemas
+ - **Ejercicio 1** : BT y PDR manual
+ - **Ejercicio 2** : A*, BT, PDR, PDR manual
