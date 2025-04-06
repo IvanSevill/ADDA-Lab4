@@ -69,7 +69,7 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 	 * el espacio disponible se actualizan en función de la acción tomada
 	 */
 
-	public AlmacenVertex neighbor(Integer action) {
+	public AlmacenVertexInterface neighbor(Integer action) {
 		Integer nIndice = this.indice + 1; // Siempre aumento el indice
 		Integer nCantidadAlmacenada = this.cantidadAlmacenada;
 		List<Set<Integer>> nProductosAlmacenados = nonMutableCopyListSet(this.productosAlmacenados);
@@ -116,10 +116,18 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 	public Double accionReal() {
 		return null;
 	}
-
+	
 	public String toString() {
 		return "AlmacenesVertexI [indice=" + indice + ", productosAlmacenados=" + productosAlmacenados
 				+ ", espacioDisponible=" + espacioDisponible + ", cantidadAlmacenda=" + cantidadAlmacenada + "]";
+	}
+
+	@Override
+	public String toGraphString() {
+		return "P"+ this.indice() + 
+				"\nAlmacenes: " + this.productosAlmacenados().toString() +
+				"\nEspacios: " + this.espacioDisponible().toString() + 
+				"\n Cantidad A: " + this.cantidadAlmacenada().toString();
 	}
 
 }
