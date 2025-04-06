@@ -1,0 +1,496 @@
+strict digraph G {
+  1 [ label="P2
+Almacenes: [[], [], [1], [0]]
+Espacios: [60, 40, 10, 20]
+ Cantidad A: 2" ];
+  2 [ label="P3
+Almacenes: [[], [2], [1], [0]]
+Espacios: [60, 25, 10, 20]
+ Cantidad A: 3" ];
+  3 [ label="P3
+Almacenes: [[2], [], [1], [0]]
+Espacios: [45, 40, 10, 20]
+ Cantidad A: 3" ];
+  4 [ label="P3
+Almacenes: [[], [], [1], [0]]
+Espacios: [60, 40, 10, 20]
+ Cantidad A: 2" ];
+  5 [ label="P1
+Almacenes: [[], [], [], [0]]
+Espacios: [60, 40, 30, 20]
+ Cantidad A: 1" ];
+  6 [ label="P2
+Almacenes: [[], [1], [], [0]]
+Espacios: [60, 20, 30, 20]
+ Cantidad A: 2" ];
+  7 [ label="P3
+Almacenes: [[], [1], [2], [0]]
+Espacios: [60, 20, 15, 20]
+ Cantidad A: 3" ];
+  8 [ label="P3
+Almacenes: [[2], [1], [], [0]]
+Espacios: [45, 20, 30, 20]
+ Cantidad A: 3" ];
+  9 [ label="P3
+Almacenes: [[], [1], [], [0]]
+Espacios: [60, 20, 30, 20]
+ Cantidad A: 2" ];
+  10 [ label="P2
+Almacenes: [[1], [], [], [0]]
+Espacios: [40, 40, 30, 20]
+ Cantidad A: 2" ];
+  11 [ label="P3
+Almacenes: [[1], [], [2], [0]]
+Espacios: [40, 40, 15, 20]
+ Cantidad A: 3" ];
+  12 [ label="P3
+Almacenes: [[1], [2], [], [0]]
+Espacios: [40, 25, 30, 20]
+ Cantidad A: 3" ];
+  13 [ label="P3
+Almacenes: [[1], [], [], [0]]
+Espacios: [40, 40, 30, 20]
+ Cantidad A: 2" ];
+  14 [ label="P2
+Almacenes: [[], [], [], [0]]
+Espacios: [60, 40, 30, 20]
+ Cantidad A: 1" ];
+  15 [ label="P3
+Almacenes: [[], [], [2], [0]]
+Espacios: [60, 40, 15, 20]
+ Cantidad A: 2" ];
+  16 [ label="P3
+Almacenes: [[], [2], [], [0]]
+Espacios: [60, 25, 30, 20]
+ Cantidad A: 2" ];
+  17 [ label="P3
+Almacenes: [[2], [], [], [0]]
+Espacios: [45, 40, 30, 20]
+ Cantidad A: 2" ];
+  18 [ label="P3
+Almacenes: [[], [], [], [0]]
+Espacios: [60, 40, 30, 20]
+ Cantidad A: 1" ];
+  19 [ label="P0
+Almacenes: [[], [], [], []]
+Espacios: [60, 40, 30, 50]
+ Cantidad A: 0" ];
+  20 [ label="P2
+Almacenes: [[], [], [0], [1]]
+Espacios: [60, 40, 0, 30]
+ Cantidad A: 2" ];
+  21 [ label="P3
+Almacenes: [[], [2], [0], [1]]
+Espacios: [60, 25, 0, 30]
+ Cantidad A: 3" ];
+  22 [ label="P3
+Almacenes: [[2], [], [0], [1]]
+Espacios: [45, 40, 0, 30]
+ Cantidad A: 3" ];
+  23 [ label="P3
+Almacenes: [[], [], [0], [1]]
+Espacios: [60, 40, 0, 30]
+ Cantidad A: 2" ];
+  24 [ label="P1
+Almacenes: [[], [], [0], []]
+Espacios: [60, 40, 0, 50]
+ Cantidad A: 1" ];
+  25 [ label="P2
+Almacenes: [[], [1], [0], []]
+Espacios: [60, 20, 0, 50]
+ Cantidad A: 2" ];
+  26 [ label="P3
+Almacenes: [[], [1], [0], [2]]
+Espacios: [60, 20, 0, 35]
+ Cantidad A: 3" ];
+  27 [ label="P3
+Almacenes: [[2], [1], [0], []]
+Espacios: [45, 20, 0, 50]
+ Cantidad A: 3" ];
+  28 [ label="P3
+Almacenes: [[], [1], [0], []]
+Espacios: [60, 20, 0, 50]
+ Cantidad A: 2" ];
+  29 [ label="P2
+Almacenes: [[1], [], [0], []]
+Espacios: [40, 40, 0, 50]
+ Cantidad A: 2" ];
+  30 [ label="P3
+Almacenes: [[1], [], [0], [2]]
+Espacios: [40, 40, 0, 35]
+ Cantidad A: 3" ];
+  31 [ label="P3
+Almacenes: [[1], [2], [0], []]
+Espacios: [40, 25, 0, 50]
+ Cantidad A: 3" ];
+  32 [ label="P3
+Almacenes: [[1], [], [0], []]
+Espacios: [40, 40, 0, 50]
+ Cantidad A: 2" ];
+  33 [ label="P2
+Almacenes: [[], [], [0], []]
+Espacios: [60, 40, 0, 50]
+ Cantidad A: 1" ];
+  34 [ label="P3
+Almacenes: [[], [], [0], [2]]
+Espacios: [60, 40, 0, 35]
+ Cantidad A: 2" ];
+  35 [ label="P3
+Almacenes: [[], [2], [0], []]
+Espacios: [60, 25, 0, 50]
+ Cantidad A: 2" ];
+  36 [ label="P3
+Almacenes: [[2], [], [0], []]
+Espacios: [45, 40, 0, 50]
+ Cantidad A: 2" ];
+  37 [ label="P3
+Almacenes: [[], [], [0], []]
+Espacios: [60, 40, 0, 50]
+ Cantidad A: 1" ];
+  38 [ label="P2
+Almacenes: [[], [0], [], [1]]
+Espacios: [60, 10, 30, 30]
+ Cantidad A: 2" ];
+  39 [ label="P3
+Almacenes: [[], [0], [2], [1]]
+Espacios: [60, 10, 15, 30]
+ Cantidad A: 3" ];
+  40 [ label="P3
+Almacenes: [[2], [0], [], [1]]
+Espacios: [45, 10, 30, 30]
+ Cantidad A: 3" ];
+  41 [ label="P3
+Almacenes: [[], [0], [], [1]]
+Espacios: [60, 10, 30, 30]
+ Cantidad A: 2" ];
+  42 [ label="P1
+Almacenes: [[], [0], [], []]
+Espacios: [60, 10, 30, 50]
+ Cantidad A: 1" ];
+  43 [ label="P2
+Almacenes: [[], [0], [1], []]
+Espacios: [60, 10, 10, 50]
+ Cantidad A: 2" ];
+  44 [ label="P3
+Almacenes: [[], [0], [1], [2]]
+Espacios: [60, 10, 10, 35]
+ Cantidad A: 3" ];
+  45 [ label="P3
+Almacenes: [[2], [0], [1], []]
+Espacios: [45, 10, 10, 50]
+ Cantidad A: 3" ];
+  46 [ label="P3
+Almacenes: [[], [0], [1], []]
+Espacios: [60, 10, 10, 50]
+ Cantidad A: 2" ];
+  47 [ label="P2
+Almacenes: [[1], [0], [], []]
+Espacios: [40, 10, 30, 50]
+ Cantidad A: 2" ];
+  48 [ label="P3
+Almacenes: [[1], [0], [], [2]]
+Espacios: [40, 10, 30, 35]
+ Cantidad A: 3" ];
+  49 [ label="P3
+Almacenes: [[1], [0], [2], []]
+Espacios: [40, 10, 15, 50]
+ Cantidad A: 3" ];
+  50 [ label="P3
+Almacenes: [[1], [0], [], []]
+Espacios: [40, 10, 30, 50]
+ Cantidad A: 2" ];
+  51 [ label="P2
+Almacenes: [[], [0], [], []]
+Espacios: [60, 10, 30, 50]
+ Cantidad A: 1" ];
+  52 [ label="P3
+Almacenes: [[], [0], [], [2]]
+Espacios: [60, 10, 30, 35]
+ Cantidad A: 2" ];
+  53 [ label="P3
+Almacenes: [[], [0], [2], []]
+Espacios: [60, 10, 15, 50]
+ Cantidad A: 2" ];
+  54 [ label="P3
+Almacenes: [[2], [0], [], []]
+Espacios: [45, 10, 30, 50]
+ Cantidad A: 2" ];
+  55 [ label="P3
+Almacenes: [[], [0], [], []]
+Espacios: [60, 10, 30, 50]
+ Cantidad A: 1" ];
+  56 [ label="P2
+Almacenes: [[0], [], [], [1]]
+Espacios: [30, 40, 30, 30]
+ Cantidad A: 2" ];
+  57 [ label="P3
+Almacenes: [[0], [], [2], [1]]
+Espacios: [30, 40, 15, 30]
+ Cantidad A: 3" ];
+  58 [ label="P3
+Almacenes: [[0], [2], [], [1]]
+Espacios: [30, 25, 30, 30]
+ Cantidad A: 3" ];
+  59 [ label="P3
+Almacenes: [[0], [], [], [1]]
+Espacios: [30, 40, 30, 30]
+ Cantidad A: 2" ];
+  60 [ label="P1
+Almacenes: [[0], [], [], []]
+Espacios: [30, 40, 30, 50]
+ Cantidad A: 1" ];
+  61 [ label="P2
+Almacenes: [[0], [], [1], []]
+Espacios: [30, 40, 10, 50]
+ Cantidad A: 2" ];
+  62 [ label="P3
+Almacenes: [[0], [], [1], [2]]
+Espacios: [30, 40, 10, 35]
+ Cantidad A: 3" ];
+  63 [ label="P3
+Almacenes: [[0], [2], [1], []]
+Espacios: [30, 25, 10, 50]
+ Cantidad A: 3" ];
+  64 [ label="P3
+Almacenes: [[0], [], [1], []]
+Espacios: [30, 40, 10, 50]
+ Cantidad A: 2" ];
+  65 [ label="P2
+Almacenes: [[0], [1], [], []]
+Espacios: [30, 20, 30, 50]
+ Cantidad A: 2" ];
+  66 [ label="P3
+Almacenes: [[0], [1], [], [2]]
+Espacios: [30, 20, 30, 35]
+ Cantidad A: 3" ];
+  67 [ label="P3
+Almacenes: [[0], [1], [2], []]
+Espacios: [30, 20, 15, 50]
+ Cantidad A: 3" ];
+  68 [ label="P3
+Almacenes: [[0], [1], [], []]
+Espacios: [30, 20, 30, 50]
+ Cantidad A: 2" ];
+  69 [ label="P2
+Almacenes: [[0], [], [], []]
+Espacios: [30, 40, 30, 50]
+ Cantidad A: 1" ];
+  70 [ label="P3
+Almacenes: [[0], [], [], [2]]
+Espacios: [30, 40, 30, 35]
+ Cantidad A: 2" ];
+  71 [ label="P3
+Almacenes: [[0], [], [2], []]
+Espacios: [30, 40, 15, 50]
+ Cantidad A: 2" ];
+  72 [ label="P3
+Almacenes: [[0], [2], [], []]
+Espacios: [30, 25, 30, 50]
+ Cantidad A: 2" ];
+  73 [ label="P3
+Almacenes: [[0], [], [], []]
+Espacios: [30, 40, 30, 50]
+ Cantidad A: 1" ];
+  74 [ label="P2
+Almacenes: [[], [], [], [1]]
+Espacios: [60, 40, 30, 30]
+ Cantidad A: 1" ];
+  75 [ label="P3
+Almacenes: [[], [], [2], [1]]
+Espacios: [60, 40, 15, 30]
+ Cantidad A: 2" ];
+  76 [ label="P3
+Almacenes: [[], [2], [], [1]]
+Espacios: [60, 25, 30, 30]
+ Cantidad A: 2" ];
+  77 [ label="P3
+Almacenes: [[2], [], [], [1]]
+Espacios: [45, 40, 30, 30]
+ Cantidad A: 2" ];
+  78 [ label="P3
+Almacenes: [[], [], [], [1]]
+Espacios: [60, 40, 30, 30]
+ Cantidad A: 1" ];
+  79 [ label="P1
+Almacenes: [[], [], [], []]
+Espacios: [60, 40, 30, 50]
+ Cantidad A: 0" ];
+  80 [ label="P2
+Almacenes: [[], [], [1], []]
+Espacios: [60, 40, 10, 50]
+ Cantidad A: 1" ];
+  81 [ label="P3
+Almacenes: [[], [], [1], [2]]
+Espacios: [60, 40, 10, 35]
+ Cantidad A: 2" ];
+  82 [ label="P3
+Almacenes: [[], [2], [1], []]
+Espacios: [60, 25, 10, 50]
+ Cantidad A: 2" ];
+  83 [ label="P3
+Almacenes: [[2], [], [1], []]
+Espacios: [45, 40, 10, 50]
+ Cantidad A: 2" ];
+  84 [ label="P3
+Almacenes: [[], [], [1], []]
+Espacios: [60, 40, 10, 50]
+ Cantidad A: 1" ];
+  85 [ label="P2
+Almacenes: [[], [1], [], []]
+Espacios: [60, 20, 30, 50]
+ Cantidad A: 1" ];
+  86 [ label="P3
+Almacenes: [[], [1], [], [2]]
+Espacios: [60, 20, 30, 35]
+ Cantidad A: 2" ];
+  87 [ label="P3
+Almacenes: [[], [1], [2], []]
+Espacios: [60, 20, 15, 50]
+ Cantidad A: 2" ];
+  88 [ label="P3
+Almacenes: [[2], [1], [], []]
+Espacios: [45, 20, 30, 50]
+ Cantidad A: 2" ];
+  89 [ label="P3
+Almacenes: [[], [1], [], []]
+Espacios: [60, 20, 30, 50]
+ Cantidad A: 1" ];
+  90 [ label="P2
+Almacenes: [[1], [], [], []]
+Espacios: [40, 40, 30, 50]
+ Cantidad A: 1" ];
+  91 [ label="P3
+Almacenes: [[1], [], [], [2]]
+Espacios: [40, 40, 30, 35]
+ Cantidad A: 2" ];
+  92 [ label="P3
+Almacenes: [[1], [], [2], []]
+Espacios: [40, 40, 15, 50]
+ Cantidad A: 2" ];
+  93 [ label="P3
+Almacenes: [[1], [2], [], []]
+Espacios: [40, 25, 30, 50]
+ Cantidad A: 2" ];
+  94 [ label="P3
+Almacenes: [[1], [], [], []]
+Espacios: [40, 40, 30, 50]
+ Cantidad A: 1" ];
+  95 [ label="P2
+Almacenes: [[], [], [], []]
+Espacios: [60, 40, 30, 50]
+ Cantidad A: 0" ];
+  96 [ label="P3
+Almacenes: [[], [], [], [2]]
+Espacios: [60, 40, 30, 35]
+ Cantidad A: 1" ];
+  97 [ label="P3
+Almacenes: [[], [], [2], []]
+Espacios: [60, 40, 15, 50]
+ Cantidad A: 1" ];
+  98 [ label="P3
+Almacenes: [[], [2], [], []]
+Espacios: [60, 25, 30, 50]
+ Cantidad A: 1" ];
+  99 [ label="P3
+Almacenes: [[2], [], [], []]
+Espacios: [45, 40, 30, 50]
+ Cantidad A: 1" ];
+  1 -> 2 [ color="red" label="A1" ];
+  1 -> 3 [ label="A0" ];
+  1 -> 4 [ label="A-1" ];
+  5 -> 1 [ color="red" label="A2" ];
+  6 -> 7 [ label="A2" ];
+  6 -> 8 [ label="A0" ];
+  6 -> 9 [ label="A-1" ];
+  5 -> 6 [ label="A1" ];
+  10 -> 11 [ label="A2" ];
+  10 -> 12 [ label="A1" ];
+  10 -> 13 [ label="A-1" ];
+  5 -> 10 [ label="A0" ];
+  14 -> 15 [ label="A2" ];
+  14 -> 16 [ label="A1" ];
+  14 -> 17 [ label="A0" ];
+  14 -> 18 [ label="A-1" ];
+  5 -> 14 [ label="A-1" ];
+  19 -> 5 [ color="red" label="A3" ];
+  20 -> 21 [ label="A1" ];
+  20 -> 22 [ label="A0" ];
+  20 -> 23 [ label="A-1" ];
+  24 -> 20 [ label="A3" ];
+  25 -> 26 [ label="A3" ];
+  25 -> 27 [ label="A0" ];
+  25 -> 28 [ label="A-1" ];
+  24 -> 25 [ label="A1" ];
+  29 -> 30 [ label="A3" ];
+  29 -> 31 [ label="A1" ];
+  29 -> 32 [ label="A-1" ];
+  24 -> 29 [ label="A0" ];
+  33 -> 34 [ label="A3" ];
+  33 -> 35 [ label="A1" ];
+  33 -> 36 [ label="A0" ];
+  33 -> 37 [ label="A-1" ];
+  24 -> 33 [ label="A-1" ];
+  19 -> 24 [ label="A2" ];
+  38 -> 39 [ label="A2" ];
+  38 -> 40 [ label="A0" ];
+  38 -> 41 [ label="A-1" ];
+  42 -> 38 [ label="A3" ];
+  43 -> 44 [ label="A3" ];
+  43 -> 45 [ label="A0" ];
+  43 -> 46 [ label="A-1" ];
+  42 -> 43 [ label="A2" ];
+  47 -> 48 [ label="A3" ];
+  47 -> 49 [ label="A2" ];
+  47 -> 50 [ label="A-1" ];
+  42 -> 47 [ label="A0" ];
+  51 -> 52 [ label="A3" ];
+  51 -> 53 [ label="A2" ];
+  51 -> 54 [ label="A0" ];
+  51 -> 55 [ label="A-1" ];
+  42 -> 51 [ label="A-1" ];
+  19 -> 42 [ label="A1" ];
+  56 -> 57 [ label="A2" ];
+  56 -> 58 [ label="A1" ];
+  56 -> 59 [ label="A-1" ];
+  60 -> 56 [ label="A3" ];
+  61 -> 62 [ label="A3" ];
+  61 -> 63 [ label="A1" ];
+  61 -> 64 [ label="A-1" ];
+  60 -> 61 [ label="A2" ];
+  65 -> 66 [ label="A3" ];
+  65 -> 67 [ label="A2" ];
+  65 -> 68 [ label="A-1" ];
+  60 -> 65 [ label="A1" ];
+  69 -> 70 [ label="A3" ];
+  69 -> 71 [ label="A2" ];
+  69 -> 72 [ label="A1" ];
+  69 -> 73 [ label="A-1" ];
+  60 -> 69 [ label="A-1" ];
+  19 -> 60 [ label="A0" ];
+  74 -> 75 [ label="A2" ];
+  74 -> 76 [ label="A1" ];
+  74 -> 77 [ label="A0" ];
+  74 -> 78 [ label="A-1" ];
+  79 -> 74 [ label="A3" ];
+  80 -> 81 [ label="A3" ];
+  80 -> 82 [ label="A1" ];
+  80 -> 83 [ label="A0" ];
+  80 -> 84 [ label="A-1" ];
+  79 -> 80 [ label="A2" ];
+  85 -> 86 [ label="A3" ];
+  85 -> 87 [ label="A2" ];
+  85 -> 88 [ label="A0" ];
+  85 -> 89 [ label="A-1" ];
+  79 -> 85 [ label="A1" ];
+  90 -> 91 [ label="A3" ];
+  90 -> 92 [ label="A2" ];
+  90 -> 93 [ label="A1" ];
+  90 -> 94 [ label="A-1" ];
+  79 -> 90 [ label="A0" ];
+  95 -> 96 [ label="A3" ];
+  95 -> 97 [ label="A2" ];
+  95 -> 98 [ label="A1" ];
+  95 -> 99 [ label="A0" ];
+  79 -> 95 [ label="A-1" ];
+  19 -> 79 [ label="A-1" ];
+}
