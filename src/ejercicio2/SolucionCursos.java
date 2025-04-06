@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import common.DatosAlmacenes;
-import common.DatosAlmacenes.Producto;
 import common.DatosCursos;
 import common.DatosCursos.Curso;
 
@@ -63,5 +61,9 @@ public class SolucionCursos {
 
 	public Integer getCosteTotal() {
 		return costeTotal;
+	}
+
+	public static SolucionCursos of(List<Integer> gp_as) {
+		return new SolucionCursos(gp_as);
 	}
 }

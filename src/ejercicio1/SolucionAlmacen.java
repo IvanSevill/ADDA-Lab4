@@ -15,8 +15,8 @@ import us.lsi.gurobi.GurobiSolution;
 
 public class SolucionAlmacen {
 	
-	public static SolucionAlmacen of(GraphPath<AlmacenVertex, AlmacenEdge> path) {
-		return SolucionAlmacen.ofEdges(path.getEdgeList());
+	public static SolucionAlmacen of(GraphPath<AlmacenVertexInterface, AlmacenEdge> graphPath) {
+		return SolucionAlmacen.ofEdges(graphPath.getEdgeList());
 	}
 	
 	public static SolucionAlmacen ofEdges(List<AlmacenEdge> ls) {

@@ -4,17 +4,6 @@
 
 Este proyecto tiene como objetivo la resolución de problemas complejos mediante el uso de técnicas de modelado de grafos y algoritmos de búsqueda, tales como Programación Dinámica (PD), Búsqueda en Profundidad con Retroceso (BT) y A*.
 
-### Ejemplos de Problemas
-
-1. **Problema de la suma mínima de un multiconjunto:**
-   Dado un conjunto de números enteros estrictamente positivos, el objetivo es encontrar el multiconjunto formado por números de ese conjunto cuya suma sea exactamente `n` y tenga el menor tamaño posible. El tamaño de un multiconjunto se define como la suma de las multiplicidades de cada número.
-
-2. **Problema de la cobertura de conjuntos:**
-   Se tiene un conjunto `U` de elementos y un conjunto `S` de subconjuntos cuya unión es igual al universo. El objetivo es encontrar la selección de subconjuntos de `S` cuya unión sea igual a `U`, minimizando la suma de los pesos de los subconjuntos elegidos.
-
-3. **Problema de asignación de alumnos a grupos:**
-   Una academia desea repartir `n` alumnos en `m` grupos, maximizando la afinidad total de los alumnos a sus grupos, donde cada grupo tiene un horario y profesor distintos. Cada alumno tiene una afinidad por cada grupo, y no puede ser asignado a un grupo con afinidad 0.
-
 ### Ejercicios a Resolver
 
 1. **Distribución de productos en almacenes:**
@@ -28,3 +17,8 @@ Este proyecto tiene como objetivo la resolución de problemas complejos mediante
 
 4. **Camino óptimo en un grafo de estaciones de tren:**
    Se debe encontrar un camino que pase por todas las estaciones de tren exactamente una vez y regrese al origen, minimizando el tiempo total de viaje y el coste del trayecto, mientras cumple con otras restricciones como satisfacción de los clientes.
+
+### Guia para resolver los ejercicios
+1. BT no puede volver a usar nodos anteriores
+2. 
+   

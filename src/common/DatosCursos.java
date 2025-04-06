@@ -28,6 +28,7 @@ public class DatosCursos {
     private static List<Integer> areas;
     private static List<Curso> cursos;
     private static Integer presupuestoTotal;
+	public static Integer ntest = 3;
 
     public static void iniDatos(String fichero) {
         cursos = List2.empty();
@@ -46,7 +47,7 @@ public class DatosCursos {
             }
         }
         areas = List2.ofCollection(cat);
-        toConsole();
+        // toConsole();
     }
     
     public static Integer getNumCursos() {

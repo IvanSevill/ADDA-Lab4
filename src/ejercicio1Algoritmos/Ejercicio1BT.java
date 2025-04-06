@@ -1,0 +1,78 @@
+package ejercicio1Algoritmos;
+
+import java.util.Optional;
+
+import org.jgrapht.GraphPath;
+
+import common.AuxCommon;
+import common.DatosAlmacenes;
+import common.TipoAlgoritmo;
+import ejercicio1.AlmacenEdge;
+import ejercicio1.AlmacenHeuristic;
+import ejercicio1.AlmacenVertexInterface;
+import ejercicio1.SolucionAlmacen;
+import us.lsi.colors.GraphColors;
+import us.lsi.colors.GraphColors.Color;
+import us.lsi.graphs.alg.BT;
+import us.lsi.graphs.virtual.EGraph;
+import us.lsi.graphs.virtual.EGraph.Type;
+import us.lsi.path.EGraphPath.PathType;
+
+public class Ejercicio1BT {
+
+
+	public static final Integer EJERCICIO = 1;
+	public static final String FICHERO_SALIDA = "generated_files/ejercicio"+EJERCICIO+"/BT_";
+	public static final String FICHERO = "resources/ejercicio"+EJERCICIO+"/";
+
+	public static void main(String[] args) {
+		for (Integer i = 1; i < DatosAlmacenes.ntest; i++) {
+			ejecucionBT(i);
+		}
+	}
+
+	public static void ejecucionBT(Integer id_fichero) {
+		String fichero = FICHERO + "DatosEntrada" + id_fichero + ".txt";
+		DatosAlmacenes.iniDatos(fichero);
+
+		// No hace falta
+		AuxCommon.imprimeCabeceraAlgoritmo(fichero, EJERCICIO, TipoAlgoritmo.BT);
+
+		// Vertices clave
+		AlmacenVertexInterface start = AlmacenVertexInterface.start();
+
+		// Grafo virtual para el BT
+		EGraph<AlmacenVertexInterface, AlmacenEdge> virtualGraph = 
+				EGraph.virtual(start)
+				.pathType(PathType.Sum)
+				.type(Type.Max)
+				.edgeWeight(x -> x.weight())
+				.heuristic(AlmacenHeuristic::heuristic)
+				.build();
+
+		// Objeto del Algoritmo BT
+		BT<AlmacenVertexInterface, AlmacenEdge, SolucionAlmacen> bta  = BT.of(virtualGraph, 
+				SolucionAlmacen::of, null, null, true);
+
+		Optional<GraphPath<AlmacenVertexInterface, AlmacenEdge>> gp = bta.search();
+		System.out.println(SolucionAlmacen.of(gp.get()));
+				
+		// En teoria está bien, pero no funciona ni siquiera en los ejemplos del repopositorio
+		guardaGrafoSolucion(bta, FICHERO_SALIDA + id_fichero + ".gv");
+	}
+
+	private static void guardaGrafoSolucion(BT<AlmacenVertexInterface, AlmacenEdge, ?> bt, String ficheroSalida) {
+		// Obtener el camino óptimo (ya que en el contexto global no está disponible)
+		GraphPath<AlmacenVertexInterface, AlmacenEdge> gp = bt.search().get();
+
+		// Significando P el producto y A el almacen al que se guarda
+		GraphColors.toDot(bt.outGraph(), ficheroSalida, 
+				v -> v.toGraphString(),				
+				e -> "A"+e.action(),
+				v -> GraphColors.colorIf(Color.red, DatosAlmacenes.getNumProductos() == v.indice()),
+				e -> GraphColors.colorIf(Color.red, gp.getEdgeList().contains(e)));
+		
+		System.out.println("\n( El grafo se ha guardado en el fichero " + ficheroSalida + " )");
+	}
+	
+}

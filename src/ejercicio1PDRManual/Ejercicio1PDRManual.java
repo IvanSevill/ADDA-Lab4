@@ -2,7 +2,7 @@ package ejercicio1PDRManual;
 
 import common.DatosAlmacenes;
 
-public class TestEjercicio1PDRManual {
+public class Ejercicio1PDRManual {
 
 	public static void main(String[] args) {
 

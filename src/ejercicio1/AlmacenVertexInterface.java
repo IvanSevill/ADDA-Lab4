@@ -11,10 +11,11 @@ import us.lsi.graphs.virtual.VirtualVertex;
 public interface AlmacenVertexInterface extends VirtualVertex<AlmacenVertexInterface, AlmacenEdge, Integer> {
 
 	Integer indice();
-	List<Integer> espacioDisponible();
-	List<Set<Integer>> productosAlmacenados();
 	Integer cantidadAlmacenada();
 	Double accionReal();
+	String toGraphString();
+	List<Integer> espacioDisponible();
+	List<Set<Integer>> productosAlmacenados();
 	
 	public static AlmacenVertex start() {
 
@@ -28,4 +29,5 @@ public interface AlmacenVertexInterface extends VirtualVertex<AlmacenVertexInter
 
 		return AlmacenVertex.of(0, 0, productosIniciales, espacios);
 	}
+
 }
