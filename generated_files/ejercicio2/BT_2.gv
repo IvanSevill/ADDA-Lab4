@@ -1,0 +1,96 @@
+strict digraph G {
+  1 [ label="Curso: 5
+Cursos seleccionados: [0, 1, 2, 3, 4]
+Presupuesto restante: 30
+Areas: [0, 1, 2]" ];
+  2 [ label="Curso: 6
+Cursos seleccionados: [0, 1, 2, 3, 4]
+Presupuesto restante: 30
+Areas: [0, 1, 2]" ];
+  3 [ label="Curso: 4
+Cursos seleccionados: [0, 1, 2, 3]
+Presupuesto restante: 150
+Areas: [0, 1]" ];
+  4 [ label="Curso: 3
+Cursos seleccionados: [0, 1, 2]
+Presupuesto restante: 220
+Areas: [0, 1]" ];
+  5 [ label="Curso: 5
+Cursos seleccionados: [0, 1, 2, 4]
+Presupuesto restante: 100
+Areas: [0, 1, 2]" ];
+  6 [ label="Curso: 6
+Cursos seleccionados: [0, 1, 2, 4, 5]
+Presupuesto restante: 0
+Areas: [0, 1, 2, 3]" ];
+  7 [ label="Curso: 4
+Cursos seleccionados: [0, 1, 2]
+Presupuesto restante: 220
+Areas: [0, 1]" ];
+  8 [ color="red" label="Curso: 2
+Cursos seleccionados: [0, 1]
+Presupuesto restante: 300
+Areas: [0]" ];
+  9 [ color="red" label="Curso: 5
+Cursos seleccionados: [0, 1, 3, 4]
+Presupuesto restante: 110
+Areas: [0, 1, 2]" ];
+  10 [ label="Curso: 6
+Cursos seleccionados: [0, 1, 3, 4, 5]
+Presupuesto restante: 10
+Areas: [0, 1, 2, 3]" ];
+  11 [ color="red" label="Curso: 4
+Cursos seleccionados: [0, 1, 3]
+Presupuesto restante: 230
+Areas: [0, 1]" ];
+  12 [ color="red" label="Curso: 3
+Cursos seleccionados: [0, 1]
+Presupuesto restante: 300
+Areas: [0]" ];
+  13 [ color="red" label="Curso: 1
+Cursos seleccionados: [0]
+Presupuesto restante: 410
+Areas: [0]" ];
+  14 [ label="Curso: 5
+Cursos seleccionados: [0, 2, 3, 4]
+Presupuesto restante: 140
+Areas: [0, 1, 2]" ];
+  15 [ label="Curso: 6
+Cursos seleccionados: [0, 2, 3, 4, 5]
+Presupuesto restante: 40
+Areas: [0, 1, 2, 3]" ];
+  16 [ label="Curso: 4
+Cursos seleccionados: [0, 2, 3]
+Presupuesto restante: 260
+Areas: [0, 1]" ];
+  17 [ label="Curso: 3
+Cursos seleccionados: [0, 2]
+Presupuesto restante: 330
+Areas: [0, 1]" ];
+  18 [ label="Curso: 2
+Cursos seleccionados: [0]
+Presupuesto restante: 410
+Areas: [0]" ];
+  19 [ color="red" label="Curso: 0
+Cursos seleccionados: []
+Presupuesto restante: 500
+Areas: []" ];
+  1 -> 2 [ label="N" ];
+  3 -> 1 [ label="Y" ];
+  4 -> 3 [ label="Y" ];
+  5 -> 6 [ label="Y" ];
+  7 -> 5 [ label="Y" ];
+  4 -> 7 [ label="N" ];
+  8 -> 4 [ label="Y" ];
+  9 -> 10 [ label="Y" ];
+  11 -> 9 [ color="red" label="Y" ];
+  12 -> 11 [ color="red" label="Y" ];
+  8 -> 12 [ color="red" label="N" ];
+  13 -> 8 [ color="red" label="Y" ];
+  14 -> 15 [ label="Y" ];
+  16 -> 14 [ label="Y" ];
+  17 -> 16 [ label="Y" ];
+  18 -> 17 [ label="Y" ];
+  13 -> 18 [ label="N" ];
+  19 -> 13 [ color="red" label="Y" ];
+}

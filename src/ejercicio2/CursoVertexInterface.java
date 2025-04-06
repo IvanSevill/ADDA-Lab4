@@ -13,6 +13,7 @@ public interface CursoVertexInterface extends VirtualVertex<CursoVertexInterface
 	Integer presupuestoRestante();
 	Boolean goal();
 	Boolean goalHasSolution();
+	String toGraphString();
 	List<Integer> cursosSeleccionados();
 
 	public static CursoVertexInterface start() {

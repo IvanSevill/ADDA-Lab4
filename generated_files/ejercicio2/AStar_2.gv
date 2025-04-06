@@ -1,27 +1,191 @@
 strict digraph G {
-  1 [ label="CursosVertexI [indice=1, cursosSeleccionados=[0], presupuestoRestante=410, areas=[0]]" ];
-  2 [ label="CursosVertexI [indice=6, cursosSeleccionados=[1, 3, 4, 5], presupuestoRestante=100, areas=[0, 1, 2, 3]]" ];
-  3 [ label="CursosVertexI [indice=1, cursosSeleccionados=[], presupuestoRestante=500, areas=[]]" ];
-  4 [ label="CursosVertexI [indice=0, cursosSeleccionados=[], presupuestoRestante=500, areas=[]]" ];
-  5 [ label="CursosVertexI [indice=4, cursosSeleccionados=[1, 3], presupuestoRestante=320, areas=[0, 1]]" ];
-  6 [ label="CursosVertexI [indice=5, cursosSeleccionados=[1, 3, 4], presupuestoRestante=200, areas=[0, 1, 2]]" ];
-  7 [ label="CursosVertexI [indice=6, cursosSeleccionados=[1, 3, 4], presupuestoRestante=200, areas=[0, 1, 2]]" ];
-  8 [ label="CursosVertexI [indice=7, cursosSeleccionados=[1, 3, 4, 5, 6], presupuestoRestante=10, areas=[0, 1, 2, 3]]" ];
-  9 [ label="CursosVertexI [indice=3, cursosSeleccionados=[1], presupuestoRestante=390, areas=[0]]" ];
-  10 [ label="CursosVertexI [indice=7, cursosSeleccionados=[1, 3, 4, 5], presupuestoRestante=100, areas=[0, 1, 2, 3]]" ];
-  11 [ label="CursosVertexI [indice=2, cursosSeleccionados=[1], presupuestoRestante=390, areas=[0]]" ];
-  12 [ label="CursosVertexI [indice=3, cursosSeleccionados=[1, 2], presupuestoRestante=310, areas=[0, 1]]" ];
-  13 [ label="CursosVertexI [indice=7, cursosSeleccionados=[1, 3, 4, 6], presupuestoRestante=110, areas=[0, 1, 2, 3]]" ];
-  4 -> 1 [ label="A1" ];
-  6 -> 2 [ color="red" label="A1" ];
-  4 -> 3 [ color="red" label="A0" ];
-  9 -> 5 [ color="red" label="A1" ];
-  5 -> 6 [ color="red" label="A1" ];
-  6 -> 7 [ label="A0" ];
-  2 -> 8 [ label="A1" ];
-  11 -> 9 [ color="red" label="A0" ];
-  2 -> 10 [ color="red" label="A0" ];
-  3 -> 11 [ color="red" label="A1" ];
-  11 -> 12 [ label="A1" ];
-  7 -> 13 [ label="A1" ];
+  1 [ label="Curso: 6
+Cursos seleccionados: [0, 2, 3, 4, 5]
+Presupuesto restante: 40
+Areas: [0, 1, 2, 3]" ];
+  2 [ label="Curso: 2
+Cursos seleccionados: [0]
+Presupuesto restante: 410
+Areas: [0]" ];
+  3 [ label="Curso: 5
+Cursos seleccionados: [0, 1, 2, 4]
+Presupuesto restante: 100
+Areas: [0, 1, 2]" ];
+  4 [ label="Curso: 6
+Cursos seleccionados: [0, 1, 3, 4]
+Presupuesto restante: 110
+Areas: [0, 1, 2]" ];
+  5 [ label="Curso: 7
+Cursos seleccionados: [0, 1, 3, 4, 6]
+Presupuesto restante: 20
+Areas: [0, 1, 2, 3]" ];
+  6 [ color="red" label="Curso: 0
+Cursos seleccionados: []
+Presupuesto restante: 500
+Areas: []" ];
+  7 [ label="Curso: 7
+Cursos seleccionados: [1, 2, 3, 4, 5]
+Presupuesto restante: 20
+Areas: [0, 1, 2, 3]" ];
+  8 [ color="red" label="Curso: 7
+Cursos seleccionados: [0, 1, 3, 4, 5]
+Presupuesto restante: 10
+Areas: [0, 1, 2, 3]" ];
+  9 [ label="Curso: 5
+Cursos seleccionados: [1, 2, 3, 4]
+Presupuesto restante: 120
+Areas: [0, 1, 2]" ];
+  10 [ label="Curso: 6
+Cursos seleccionados: [0, 2, 3, 4]
+Presupuesto restante: 140
+Areas: [0, 1, 2]" ];
+  11 [ label="Curso: 5
+Cursos seleccionados: [0, 1, 2, 3, 4]
+Presupuesto restante: 30
+Areas: [0, 1, 2]" ];
+  12 [ label="Curso: 4
+Cursos seleccionados: [0, 1, 2]
+Presupuesto restante: 220
+Areas: [0, 1]" ];
+  13 [ label="Curso: 7
+Cursos seleccionados: [0, 1, 2, 4, 5]
+Presupuesto restante: 0
+Areas: [0, 1, 2, 3]" ];
+  14 [ label="Curso: 3
+Cursos seleccionados: [0, 2]
+Presupuesto restante: 330
+Areas: [0, 1]" ];
+  15 [ label="Curso: 2
+Cursos seleccionados: [1]
+Presupuesto restante: 390
+Areas: [0]" ];
+  16 [ label="Curso: 3
+Cursos seleccionados: [1, 2]
+Presupuesto restante: 310
+Areas: [0, 1]" ];
+  17 [ color="red" label="Curso: 2
+Cursos seleccionados: [0, 1]
+Presupuesto restante: 300
+Areas: [0]" ];
+  18 [ label="Curso: 4
+Cursos seleccionados: [0, 1, 2, 3]
+Presupuesto restante: 150
+Areas: [0, 1]" ];
+  19 [ label="Curso: 3
+Cursos seleccionados: [0]
+Presupuesto restante: 410
+Areas: [0]" ];
+  20 [ label="Curso: 7
+Cursos seleccionados: [0, 2, 3, 4, 5]
+Presupuesto restante: 40
+Areas: [0, 1, 2, 3]" ];
+  21 [ color="red" label="Curso: 1
+Cursos seleccionados: [0]
+Presupuesto restante: 410
+Areas: [0]" ];
+  22 [ label="Curso: 6
+Cursos seleccionados: [0, 1, 2, 4]
+Presupuesto restante: 100
+Areas: [0, 1, 2]" ];
+  23 [ label="Curso: 4
+Cursos seleccionados: [0, 2]
+Presupuesto restante: 330
+Areas: [0, 1]" ];
+  24 [ color="red" label="Curso: 5
+Cursos seleccionados: [0, 1, 3, 4]
+Presupuesto restante: 110
+Areas: [0, 1, 2]" ];
+  25 [ label="Curso: 4
+Cursos seleccionados: [1, 2, 3]
+Presupuesto restante: 240
+Areas: [0, 1]" ];
+  26 [ label="Curso: 1
+Cursos seleccionados: []
+Presupuesto restante: 500
+Areas: []" ];
+  27 [ label="Curso: 4
+Cursos seleccionados: [0, 2, 3]
+Presupuesto restante: 260
+Areas: [0, 1]" ];
+  28 [ label="Curso: 6
+Cursos seleccionados: [1, 2, 3, 4, 5]
+Presupuesto restante: 20
+Areas: [0, 1, 2, 3]" ];
+  29 [ color="red" label="Curso: 4
+Cursos seleccionados: [0, 1, 3]
+Presupuesto restante: 230
+Areas: [0, 1]" ];
+  30 [ label="Curso: 5
+Cursos seleccionados: [0, 2, 3, 4]
+Presupuesto restante: 140
+Areas: [0, 1, 2]" ];
+  31 [ label="Curso: 6
+Cursos seleccionados: [1, 2, 3, 4]
+Presupuesto restante: 120
+Areas: [0, 1, 2]" ];
+  32 [ label="Curso: 3
+Cursos seleccionados: [0, 1, 2]
+Presupuesto restante: 220
+Areas: [0, 1]" ];
+  33 [ label="Curso: 3
+Cursos seleccionados: [1]
+Presupuesto restante: 390
+Areas: [0]" ];
+  34 [ label="Curso: 6
+Cursos seleccionados: [0, 1, 2, 3, 4]
+Presupuesto restante: 30
+Areas: [0, 1, 2]" ];
+  35 [ label="Curso: 6
+Cursos seleccionados: [0, 1, 2, 4, 5]
+Presupuesto restante: 0
+Areas: [0, 1, 2, 3]" ];
+  36 [ label="Curso: 4
+Cursos seleccionados: [1, 2]
+Presupuesto restante: 310
+Areas: [0, 1]" ];
+  37 [ color="red" label="Curso: 3
+Cursos seleccionados: [0, 1]
+Presupuesto restante: 300
+Areas: [0]" ];
+  38 [ color="red" label="Curso: 6
+Cursos seleccionados: [0, 1, 3, 4, 5]
+Presupuesto restante: 10
+Areas: [0, 1, 2, 3]" ];
+  30 -> 1 [ label="Y" ];
+  21 -> 2 [ label="N" ];
+  12 -> 3 [ label="Y" ];
+  24 -> 4 [ label="N" ];
+  4 -> 5 [ label="Y" ];
+  28 -> 7 [ label="N" ];
+  38 -> 8 [ color="red" label="N" ];
+  25 -> 9 [ label="Y" ];
+  30 -> 10 [ label="N" ];
+  18 -> 11 [ label="Y" ];
+  32 -> 12 [ label="N" ];
+  35 -> 13 [ label="N" ];
+  2 -> 14 [ label="Y" ];
+  26 -> 15 [ label="Y" ];
+  15 -> 16 [ label="Y" ];
+  21 -> 17 [ color="red" label="Y" ];
+  32 -> 18 [ label="Y" ];
+  2 -> 19 [ label="N" ];
+  1 -> 20 [ label="N" ];
+  6 -> 21 [ color="red" label="Y" ];
+  3 -> 22 [ label="N" ];
+  14 -> 23 [ label="N" ];
+  29 -> 24 [ color="red" label="Y" ];
+  16 -> 25 [ label="Y" ];
+  6 -> 26 [ label="N" ];
+  14 -> 27 [ label="Y" ];
+  9 -> 28 [ label="Y" ];
+  37 -> 29 [ color="red" label="Y" ];
+  27 -> 30 [ label="Y" ];
+  9 -> 31 [ label="N" ];
+  17 -> 32 [ label="Y" ];
+  15 -> 33 [ label="N" ];
+  11 -> 34 [ label="N" ];
+  3 -> 35 [ label="Y" ];
+  16 -> 36 [ label="N" ];
+  17 -> 37 [ color="red" label="N" ];
+  24 -> 38 [ color="red" label="Y" ];
 }

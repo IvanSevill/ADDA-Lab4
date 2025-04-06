@@ -123,4 +123,10 @@ public record CursoVertex(Integer indice, List<Integer> cursosSeleccionados, Int
 				+ ", presupuestoRestante=" + presupuestoRestante + ", areas=" + areas + "]";
 	}
 
+	@Override
+	public String toGraphString() {
+		return "Curso: " + this.indice + "\n" + "Cursos seleccionados: " + this.cursosSeleccionados + "\n"
+				+ "Presupuesto restante: " + this.presupuestoRestante + "\n" + "Areas: " + this.areas;
+	}
+
 }

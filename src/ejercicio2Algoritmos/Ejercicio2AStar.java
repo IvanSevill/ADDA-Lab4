@@ -63,9 +63,8 @@ public class Ejercicio2AStar {
 
 		System.out.println(s_as);
 
-		// En teoria está bien, pero no funciona ni siquiera en los ejemplos del
-		// repopositorio
-		// guardaGrafoSolucion(aStar, FICHERO_SALIDA + id_fichero + ".gv");
+        // Funciona
+		guardaGrafoSolucion(aStar, FICHERO_SALIDA + id_fichero + ".gv");
 	}
 
 	private static void guardaGrafoSolucion(AStar<CursoVertexInterface, CursoEdge, ?> aStar, String ficheroSalida) {
@@ -73,9 +72,9 @@ public class Ejercicio2AStar {
 		GraphPath<CursoVertexInterface, CursoEdge> gp = aStar.search().get();
 
 		GraphColors.toDot(aStar.outGraph(), ficheroSalida, 
-				v -> "Curso" + v.toString(), 
+				v -> v.toGraphString(), 
 				e -> e.action() > 0 ? "Y" : "N",
-				v -> GraphColors.colorIf(Color.red, false),
+				v -> GraphColors.colorIf(Color.red, gp.getVertexList().contains(v)),
 				e -> GraphColors.colorIf(Color.red, gp.getEdgeList().contains(e)) // Color rojo si es camino óptimo
 		);
 
