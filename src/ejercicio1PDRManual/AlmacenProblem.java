@@ -1,4 +1,4 @@
-package ejercicio1;
+package ejercicio1PDRManual;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,16 +8,24 @@ import java.util.Set;
 import common.DatosAlmacenes;
 import us.lsi.common.Set2;
 
-// Indice: por que elemento voy de la iteración
-// ProductosAlmacenados: Por cada almacén, productos que se almacenan en él 
-// Espacio dispobile: m3 disponibles en cada almacén
+public record AlmacenProblem(Integer indice, Integer cantidadAlmacenada, List<Set<Integer>> productosAlmacenados,
+		List<Integer> espacioDisponible) {
 
-public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set<Integer>> productosAlmacenados,
-		List<Integer> espacioDisponible) implements AlmacenVertexInterface {
-
-	public static AlmacenVertex of(Integer indice, Integer cantidadAlmacenada, List<Set<Integer>> productosAlmacenados,
+	public static AlmacenProblem of(Integer indice, Integer cantidadAlmacenada, List<Set<Integer>> productosAlmacenados,
 			List<Integer> espacioDisponible) {
-		return new AlmacenVertex(indice, cantidadAlmacenada, productosAlmacenados, espacioDisponible);
+		return new AlmacenProblem(indice, cantidadAlmacenada, productosAlmacenados, espacioDisponible);
+	}
+
+	public static AlmacenProblem initial() {
+		List<Set<Integer>> productosIniciales = new ArrayList<>();
+		List<Integer> espacios = new ArrayList<>();
+
+		for (int i = 0; i < DatosAlmacenes.getNumAlmacenes(); i++) {
+			productosIniciales.add(new HashSet<>());
+			espacios.add(DatosAlmacenes.getMetrosCubicosAlmacen(i));
+
+		}
+		return of(0, 0, productosIniciales, espacios);
 	}
 
 	public Boolean goal() {
@@ -28,9 +36,10 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 		return true;
 	}
 
-	/**
-	 * Devuelve los almacenes en los que se puede almacenar el producto actual,
-	 * teniendo en cuenta el espacio disponible y las incompatibilidades.
+	/*
+	 * Diferentes almacenes en los que se puede almacenar el producto actual
+	 * teniendo en cuenta las decisiones tomadas hasta ahora guardadas en
+	 * espacioDisponible y productosAlmacenados
 	 */
 	public List<Integer> actions() {
 		List<Integer> acciones = new ArrayList<>();
@@ -62,14 +71,16 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 		return DatosAlmacenes.sonIncompatibles(p1, p2) || DatosAlmacenes.sonIncompatibles(p2, p1);
 	}
 
-	/**
-	 * Aplica la acción de almacenar el producto en el almacén que indique action.
-	 * Sabemos que la siguiente accion tiene un indice ++, que la cantidad
-	 * almacenada aumenta en 1 si es que se guarda y que los productos almacenados y
-	 * el espacio disponible se actualizan en función de la acción tomada
-	 */
+	public List<Set<Integer>> copyListSet(List<Set<Integer>> ls) {
+		List<Set<Integer>> copy = new ArrayList<>();
+		for (Set<Integer> set : ls) {
+			Set<Integer> newSet = new HashSet<>(set);
+			copy.add(newSet);
+		}
+		return copy;
+	}
 
-	public AlmacenVertex neighbor(Integer action) {
+	public AlmacenProblem neighbor(Integer action) {
 		Integer nIndice = this.indice + 1; // Siempre aumento el indice
 		Integer nCantidadAlmacenada = this.cantidadAlmacenada;
 		List<Set<Integer>> nProductosAlmacenados = nonMutableCopyListSet(this.productosAlmacenados);
@@ -91,7 +102,7 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 			nEspacioDisponible.set(action, espacioRestante);
 		}
 
-		return AlmacenVertex.of(nIndice, nCantidadAlmacenada, nProductosAlmacenados, nEspacioDisponible);
+		return AlmacenProblem.of(nIndice, nCantidadAlmacenada, nProductosAlmacenados, nEspacioDisponible);
 	}
 
 	public static List<Set<Integer>> nonMutableCopyListSet(List<Set<Integer>> ls) {
@@ -103,23 +114,8 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 		return res;
 	}
 
-	public AlmacenEdge edge(Integer a) {
-		return AlmacenEdge.of(this, this.neighbor(a), a);
-	}
-
-	@Override
-	public Integer cantidadAlmacenada() {
-		return this.cantidadAlmacenada;
-	}
-
-	@Override
-	public Double accionReal() {
-		return null;
-	}
-
-	public String toString() {
-		return "AlmacenesVertexI [indice=" + indice + ", productosAlmacenados=" + productosAlmacenados
-				+ ", espacioDisponible=" + espacioDisponible + ", cantidadAlmacenda=" + cantidadAlmacenada + "]";
+	public Double heuristic() {
+		return indice() < DatosAlmacenes.getNumAlmacenes() ? DatosAlmacenes.getNumProductos() - indice() : 0.;
 	}
 
 }

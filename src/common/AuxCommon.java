@@ -14,6 +14,15 @@ public class AuxCommon {
 		System.out.println(" |" + BLANCO.repeat(espaciosPorLado) + s + BLANCO.repeat(espaciosPorLado) + "|");
 		separador(CARACTER, NUMERO_COMMON);
 	}
+	
+	public static void imprimeCabeceraAlgoritmo(String datosEntrada, Integer ejercicio, TipoAlgoritmo algoritmo) {
+		System.out.println("\n\n");
+		separador(CARACTER, NUMERO_COMMON);
+		String s = "Ejecutando "+algoritmo+" | Ejercicio " + ejercicio + " con datos de entrada: " + datosEntrada;
+		Integer espaciosPorLado = (NUMERO_COMMON - s.length()) / 2 - 2;
+		System.out.println(" |" + BLANCO.repeat(espaciosPorLado) + s + BLANCO.repeat(espaciosPorLado) + "|");
+		separador(CARACTER, NUMERO_COMMON);
+	}
 
 	public static void separador(String caracter, Integer n) {
 		System.out.println(caracter.repeat(n));

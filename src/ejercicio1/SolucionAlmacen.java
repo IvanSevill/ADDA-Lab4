@@ -1,88 +1,87 @@
 package ejercicio1;
 
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.jgrapht.GraphPath;
+
 import common.DatosAlmacenes;
 import common.DatosAlmacenes.Producto;
+import us.lsi.common.List2;
+import us.lsi.common.Map2;
+import us.lsi.common.String2;
+import us.lsi.gurobi.GurobiSolution;
 
 public class SolucionAlmacen {
-	// VARIABLES
-	private Integer numproductos;
-	private Map<Producto, Integer> solucion;
-
-	// CREACIÓN VACIA
-	public static SolucionAlmacen empty(List<Integer> ls) {
-		return new SolucionAlmacen();
+	
+	public static SolucionAlmacen of(GraphPath<AlmacenVertex, AlmacenEdge> path) {
+		return SolucionAlmacen.ofEdges(path.getEdgeList());
 	}
-
-	public SolucionAlmacen() {
-		this.numproductos = 0;
-		this.solucion = new HashMap<>();
+	
+	public static SolucionAlmacen ofEdges(List<AlmacenEdge> ls) {
+		List<Integer> alternativas = List2.empty();
+		for (AlmacenEdge alternativa : ls) {
+			alternativas.add(alternativa.action());
+		}
+		SolucionAlmacen s = SolucionAlmacen.of(alternativas);
+		return s;
 	}
-
-	// CREACIÓN CON LISTA
+	
+	public static SolucionAlmacen of(List<Integer> ls) {
+		return new SolucionAlmacen(ls);
+	}
+	
+	public static SolucionAlmacen create(GurobiSolution gs) {
+		return new SolucionAlmacen(gs.objVal, gs.values);
+	}
+	
 	public static SolucionAlmacen create(List<Integer> ls) {
 		return new SolucionAlmacen(ls);
 	}
 
-	private SolucionAlmacen(List<Integer> ls) {
-		this.solucion = new HashMap<>();
+	private Integer numproductos;
+	private Map<Producto, Integer> solucion;
 
-		for (int i = 0; i < ls.size(); i++) {
-			Integer almacen = ls.get(i);
-			if (almacen != null && almacen >= 0) {
-				Producto producto = DatosAlmacenes.getProducto(i);
-				this.solucion.put(producto, almacen);
+	private SolucionAlmacen(Double vo, Map<String, Double> vbles) {
+		numproductos=0;
+		solucion = Map2.empty();
+
+		for(Map.Entry<String, Double> par: vbles.entrySet()) {
+			if(par.getValue()>0) {
+				numproductos++;
+				solucion.put(DatosAlmacenes.getProducto(Character.getNumericValue(par.getKey().charAt(2))), Character.getNumericValue(par.getKey().charAt(4)));
 			}
 		}
-
-		this.numproductos = solucion.size();
 	}
 
+	private SolucionAlmacen(List<Integer> ls) {
+			
+		numproductos = 0;
+		solucion = Map2.empty();
+		Integer m = DatosAlmacenes.getNumAlmacenes();
+		for(int i=0; i<ls.size(); i++) {
+			if(ls.get(i)>=0 && ls.get(i)<m) {
+				numproductos += 1;
+				solucion.put(DatosAlmacenes.getProducto(i), ls.get(i));
+			}
+		}
+	}
+	
+	private SolucionAlmacen() {
+		numproductos = 0;
+		solucion = Map2.empty();
+	}
+	
 	@Override
 	public String toString() {
-		String reparto = solucion.entrySet().stream()
-			.sorted(Comparator.comparing(e -> e.getKey().producto()))
-			.map(p -> p.getKey().producto() + ": Almacen " + p.getValue()
-				+ " (" + p.getKey().metroscubicosrequeridos() + "/"
-				+ DatosAlmacenes.getMetrosCubicosAlmacen(p.getValue()) + ")")
-			.collect(Collectors.joining("\n",
-				"Reparto de productos y almacen en el que se coloca cada uno de ellos:\n\n",
-				"\n"));
-
-		// Calcular ocupación por almacén
-		Map<Integer, Integer> ocupacion = solucion.entrySet().stream()
-			.collect(Collectors.groupingBy(
-				e -> e.getValue(),
-				Collectors.summingInt(e -> e.getKey().metroscubicosrequeridos())
-			));
-
-		// Resumen por almacén
-		String resumen = ocupacion.entrySet().stream()
-			.sorted(Map.Entry.comparingByKey())
-			.map(e -> String.format("Almacén %d → %d / %d",
-				e.getKey(),
-				e.getValue(),
-				DatosAlmacenes.getMetrosCubicosAlmacen(e.getKey())))
-			.collect(Collectors.joining("\n"));
-
-		// Totales generales
-		int volumenTotal = ocupacion.values().stream().mapToInt(Integer::intValue).sum();
-		int capacidadTotal = 0;
-		for (int i = 0; i < DatosAlmacenes.getNumAlmacenes(); i++) {
-			capacidadTotal += DatosAlmacenes.getMetrosCubicosAlmacen(i);
-		}
-
-		String totales = String.format(
-			"\n\nProductos colocados: %d\nVolumen ocupado: %d / %d",
-			numproductos, volumenTotal, capacidadTotal);
-
-		return reparto +"\n"+ resumen + totales;
+		return solucion.entrySet().stream()
+		.map(p -> p.getKey().producto()+": Almacen "+p.getValue())
+		.collect(Collectors.joining("\n", "Reparto de productos y almacen en el que se coloca cada uno de ellos:\n", String.format("\nProductos colocados: %d", numproductos)));
 	}
-
+	
+	public static void print(GurobiSolution gs) {
+		String2.toConsole("%s\n%s\n%s", String2.linea(), create(gs), String2.linea());
+	}
 
 }

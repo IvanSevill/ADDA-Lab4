@@ -45,6 +45,9 @@ public class DatosAlmacenes {
 		}
 	}
 	
+	//public static Integer ntest = 4;
+	public static Integer ntest = 4;
+
 	private static List<Almacen> almacenes;
 	private static List<Producto> productos;
 	
