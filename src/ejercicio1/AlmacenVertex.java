@@ -45,7 +45,7 @@ public record AlmacenVertex(Integer indice, Integer cantidadAlmacenada, List<Set
 
 		for (int i = 0; i < DatosAlmacenes.getNumAlmacenes(); i++) {
 			if (espacioDisponible.get(i) >= volumenProducto) {
-				boolean incompatible = productosAlmacenados.get(i).stream()
+				Boolean incompatible = productosAlmacenados.get(i).stream()
 						.anyMatch(p -> sonIncompatiblesBidireccional(p, productoActual));
 
 				if (!incompatible) {

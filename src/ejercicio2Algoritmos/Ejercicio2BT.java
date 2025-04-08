@@ -40,8 +40,13 @@ public class Ejercicio2BT {
 
 		CursoVertexInterface start = CursoVertexInterface.start();
 
-		EGraph<CursoVertexInterface, CursoEdge> virtualGraph = EGraph.virtual(start).pathType(PathType.Sum)
-				.type(Type.Max).edgeWeight(x -> x.weight()).heuristic(CursoHeuristic::heuristic).build();
+		EGraph<CursoVertexInterface, CursoEdge> virtualGraph = 
+				EGraph.virtual(start)
+				.pathType(PathType.Sum)
+				.type(Type.Max)
+				.edgeWeight(x -> x.weight())
+				.heuristic(CursoHeuristic::heuristic)
+				.build();
 
 		// Algoritmo Voraz
 		Optional<GraphPath<CursoVertexInterface, CursoEdge>> optionalVoraz = GreedyOnGraph.of(virtualGraph).search();
