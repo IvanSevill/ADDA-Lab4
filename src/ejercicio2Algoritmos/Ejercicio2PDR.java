@@ -43,8 +43,13 @@ public class Ejercicio2PDR {
 		CursoVertexInterface start = CursoVertexInterface.start();
 
 		// Grafo virtual
-		EGraph<CursoVertexInterface, CursoEdge> virtualGraph = EGraph.virtual(start).pathType(PathType.Sum)
-				.type(Type.Max).edgeWeight(x -> x.weight()).heuristic(CursoHeuristic::heuristic).build();
+		EGraph<CursoVertexInterface, CursoEdge> virtualGraph = 
+				EGraph.virtual(start)
+				.pathType(PathType.Sum)
+				.type(Type.Max)
+				.edgeWeight(x -> x.weight())
+				.heuristic(CursoHeuristic::heuristic)
+				.build();
 
 		Optional<GraphPath<CursoVertexInterface, CursoEdge>> optionalVoraz = GreedyOnGraph.of(virtualGraph).search();
 

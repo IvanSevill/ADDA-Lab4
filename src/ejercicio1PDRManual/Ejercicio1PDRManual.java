@@ -10,6 +10,7 @@ public class Ejercicio1PDRManual {
 
 		for (Integer id_fichero = 1; id_fichero < DatosAlmacenes.ntest; id_fichero++) {
 			ejecutaPDRManual1(id_fichero);
+			AuxCommon.separador();
 		}
 	}
 

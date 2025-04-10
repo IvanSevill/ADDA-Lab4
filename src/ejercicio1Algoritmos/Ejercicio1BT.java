@@ -51,8 +51,7 @@ public class Ejercicio1BT {
 				.build();
 
 		// Objeto del Algoritmo BT
-		BT<AlmacenVertexInterface, AlmacenEdge, SolucionAlmacen> bta  = BT.of(virtualGraph, 
-				SolucionAlmacen::of, null, null, true);
+		BT<AlmacenVertexInterface, AlmacenEdge, SolucionAlmacen> bta  = BT.ofGreedy(virtualGraph);
 
 		Optional<GraphPath<AlmacenVertexInterface, AlmacenEdge>> gp = bta.search();
 		System.out.println(SolucionAlmacen.of(gp.get()));

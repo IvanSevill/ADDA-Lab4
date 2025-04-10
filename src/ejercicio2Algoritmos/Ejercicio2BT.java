@@ -44,7 +44,7 @@ public class Ejercicio2BT {
 				EGraph.virtual(start)
 				.pathType(PathType.Sum)
 				.type(Type.Max)
-				.edgeWeight(x -> x.weight())
+				.edgeWeight(CursoEdge::weight)
 				.heuristic(CursoHeuristic::heuristic)
 				.build();
 
@@ -86,9 +86,10 @@ public class Ejercicio2BT {
 
 		if (optVoraz.isPresent()) {
 			// En el caso de que haya solucion, la paso como valores iniciales de BT
-			SolucionCursos sVoraz = construirSolucion(optVoraz.get());
+			GraphPath<CursoVertexInterface, CursoEdge> solVoraz = optVoraz.get();
+			SolucionCursos sVoraz = construirSolucion(solVoraz);
 			System.out.println(sVoraz);
-			return BT.of(vg, Ejercicio2BT::construirSolucion, optVoraz.get().getWeight(), optVoraz.get(), true);
+			return BT.of(vg, Ejercicio2BT::construirSolucion, solVoraz.getWeight(), solVoraz, true);
 		} else {
 			// En el caso de que no haya solucion, no puedo pasarle nada
 			System.out.println("No hay solución voraz.");

@@ -51,7 +51,7 @@ public class Ejercicio1PDR {
 				.build();
 
 		// Objeto del Algoritmo PDR
-		PDR<AlmacenVertexInterface, AlmacenEdge, ?> pdr = PDR.of(virtualGraph, null, null, null, true);
+		PDR<AlmacenVertexInterface, AlmacenEdge, ?> pdr = PDR.ofGreedy(virtualGraph);
 
 		Optional<GraphPath<AlmacenVertexInterface, AlmacenEdge>> gp = pdr.search();
 
