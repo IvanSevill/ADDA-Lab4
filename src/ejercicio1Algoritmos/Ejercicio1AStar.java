@@ -59,10 +59,10 @@ public class Ejercicio1AStar {
 		AStar<AlmacenVertexInterface, AlmacenEdge, ?> aStar = AStar.ofGreedy(virtualGraph);
 
 		// Ejecucion de A* para encontrar el camino optimo
-		Optional<GraphPath<AlmacenVertexInterface, AlmacenEdge>> gp = aStar.search();
+		Optional<GraphPath<AlmacenVertexInterface, AlmacenEdge>> optionalSolution = aStar.search();
 
-		if (gp.isPresent()) {
-			GraphPath<AlmacenVertexInterface, AlmacenEdge> solution = aStar.search().get();
+		if (optionalSolution.isPresent()) {
+			GraphPath<AlmacenVertexInterface, AlmacenEdge> solution = optionalSolution.get();
 			List<Integer> gp_as = solution.getEdgeList().stream().map(x -> x.action()).collect(Collectors.toList());
 			SolucionAlmacen s_as = SolucionAlmacen.of(gp_as);
             System.out.println(s_as);
@@ -127,7 +127,9 @@ public class Ejercicio1AStar {
 	private static void guardaGrafoSolucion(AStar<AlmacenVertexInterface, AlmacenEdge, ?> aStar, String ficheroSalida) {
 		GraphPath<AlmacenVertexInterface, AlmacenEdge> gp = aStar.search().get();
 
-		GraphColors.toDot(aStar.outGraph(), ficheroSalida, v -> v.toGraphString(), e -> "A" + e.action(),
+		GraphColors.toDot(aStar.outGraph(), ficheroSalida, 
+				v -> v.toGraphString(), 
+				e -> "A" + e.action(),
 				v -> GraphColors.colorIf(Color.red, DatosAlmacenes.getNumProductos() == v.indice()),
 				e -> GraphColors.colorIf(Color.red, gp.getEdgeList().contains(e)));
 

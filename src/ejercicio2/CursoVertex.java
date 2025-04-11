@@ -37,14 +37,14 @@ public record CursoVertex(Integer indice, List<Integer> cursosSeleccionados, Int
 			}
 
 			// Se añade 0 si el área estaba en areas o si hay cursos restantes
-			if (areas.contains(area) || !cursosElegidosAreaConcretaIndice(area, indice + 1).isEmpty()) {
-				alternativas.add(0); // Añadir 0 si el área ya está cubierta o si hay cursos restantes
+			if (areas.contains(area) || !cursosRestantesAreaConcretaIndice(area, indice + 1).isEmpty()) {
+				alternativas.add(0);
 			}
 		}
 		return alternativas;
 	}
 
-	private List<Curso> cursosElegidosAreaConcretaIndice(Integer area, Integer i) {
+	private List<Curso> cursosRestantesAreaConcretaIndice(Integer area, Integer i) {
 		List<Curso> ls = new ArrayList<Curso>();
 		for (int k = i; k < DatosCursos.getNumCursos(); k++) {
 			if (DatosCursos.getArea(k).equals(area)) {

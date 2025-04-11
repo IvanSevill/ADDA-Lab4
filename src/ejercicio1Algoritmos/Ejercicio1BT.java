@@ -1,6 +1,8 @@
 package ejercicio1Algoritmos;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.jgrapht.GraphPath;
 
@@ -19,7 +21,6 @@ import us.lsi.graphs.virtual.EGraph.Type;
 import us.lsi.path.EGraphPath.PathType;
 
 public class Ejercicio1BT {
-
 
 	public static final Integer EJERCICIO = 1;
 	public static final String FICHERO_SALIDA = "generated_files/ejercicio"+EJERCICIO+"/BT_";
@@ -52,12 +53,22 @@ public class Ejercicio1BT {
 
 		// Objeto del Algoritmo BT
 		BT<AlmacenVertexInterface, AlmacenEdge, SolucionAlmacen> bta  = BT.ofGreedy(virtualGraph);
+		
+		// Ejecucion de BT para encontrar el camino optimo
+		Optional<GraphPath<AlmacenVertexInterface, AlmacenEdge>> optionalSolucion = bta.search();
+		
+		if (optionalSolucion.isPresent()) {
+			GraphPath<AlmacenVertexInterface, AlmacenEdge> solution = optionalSolucion.get();
+			List<Integer> gp_as = solution.getEdgeList().stream().map(e -> e.action()).collect(Collectors.toList());
+			System.out.println(SolucionAlmacen.of(gp_as));
+			
+			// NO hace realmente falta
+			// guardaGrafoSolucion(bta, FICHERO_SALIDA + id_fichero + ".gv");
 
-		Optional<GraphPath<AlmacenVertexInterface, AlmacenEdge>> gp = bta.search();
-		System.out.println(SolucionAlmacen.of(gp.get()));
-				
-		// En teoria está bien, pero no funciona ni siquiera en los ejemplos del repopositorio
-		guardaGrafoSolucion(bta, FICHERO_SALIDA + id_fichero + ".gv");
+		} else {
+			System.out.println("No se ha encontrado solución");
+		}
+
 	}
 
 	private static void guardaGrafoSolucion(BT<AlmacenVertexInterface, AlmacenEdge, ?> bt, String ficheroSalida) {
