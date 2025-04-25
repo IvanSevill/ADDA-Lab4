@@ -27,16 +27,14 @@ public record CursoVertex(Integer indice, List<Integer> cursosSeleccionados, Int
 	 * Valor: 0 no se selecciona el curso actual, 1 en c.c.
 	 */
 	public List<Integer> actions() {
-		List<Integer> alternativas = new ArrayList<>(); // Usar ArrayList directamente
+		List<Integer> alternativas = new ArrayList<>();
 		if (indice < DatosCursos.getNumCursos()) {
 			Integer area = DatosCursos.getArea(indice);
 
-			// Verificar si el presupuesto restante es suficiente
 			if (this.presupuestoRestante >= DatosCursos.getCoste(indice)) {
-				alternativas.add(1); // Añadir 1 si se puede cubrir el curso
+				alternativas.add(1); 
 			}
 
-			// Se añade 0 si el área estaba en areas o si hay cursos restantes
 			if (areas.contains(area) || !cursosRestantesAreaConcretaIndice(area, indice + 1).isEmpty()) {
 				alternativas.add(0);
 			}
@@ -62,13 +60,8 @@ public record CursoVertex(Integer indice, List<Integer> cursosSeleccionados, Int
 
 		// Si se selecciona el curso actual
 		if (a != 0) {
-			// Se añade el curso a la lista de cursos seleccionados
 			nCursosSeleccionados.add(this.indice);
-
-			// Se añade el area a la que pertenece el curso escogido
 			nAreas.add(DatosCursos.getArea(this.indice));
-
-			// Resto al presupuesto restante el coste del curso escogido
 			nPresupuestoRestante -= DatosCursos.getCoste(this.indice);
 		}
 
