@@ -1,5 +1,5 @@
 package ejercicio3Algoritmos;
 
-public class Ejercicio3PDR {
+public class Ejercicio3PD {
 
 }

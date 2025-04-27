@@ -122,11 +122,12 @@ public class DatosEstaciones {
 	}
     
 	    
-	public static Integer calculaEstacionesConsecSatisf (List<Integer> cr) {
-		return (int) IntStream.range(0, n).boxed()
-				.filter(i -> compruebaEstacionesCumplen(cr.get(i), cr.get((i+1)%n)))
-				.count();
+	public static Integer calculaEstacionesConsecSatisf(List<Integer> cr) {
+	    return (int) IntStream.range(0, cr.size() - 1) // ¡ojo aquí!
+	            .filter(i -> compruebaEstacionesCumplen(cr.get(i), cr.get(i+1)))
+	            .count();
 	}
+
 
 
 	public static void toConsole() {

@@ -82,7 +82,7 @@ public class DatosCursos {
     }
     
     public static void main(String[] args) {
-		iniDatos("resources/ejercicio2/DatosEntrada1.txt");
+		iniDatos("resources/ejercicio4/DatosEntrada1.txt");
     }
 }
 

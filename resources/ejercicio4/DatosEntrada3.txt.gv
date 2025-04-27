@@ -1,0 +1,37 @@
+strict graph G {
+  1 [ color="black" label="Sol" ];
+  2 [ color="black" label="Callao" ];
+  3 [ color="black" label="Gran Via" ];
+  4 [ color="black" label="Principe Pio" ];
+  5 [ color="black" label="Chueca" ];
+  6 [ color="black" label="Nuevos Ministerios" ];
+  7 [ color="black" label="Opera" ];
+  8 [ color="black" label="Cuatro Caminos" ];
+  9 [ color="black" label="Atocha" ];
+  10 [ color="black" label="Ventas" ];
+  11 [ color="black" label="Embajadores" ];
+  12 [ color="black" label="Lavapies" ];
+  1 -- 2 [ color="black" label="(T: 150.0 minutos, C: 2.0 euros)" ];
+  1 -- 3 [ color="black" label="(T: 100.0 minutos, C: 1.5 euros)" ];
+  1 -- 5 [ color="black" label="(T: 150.0 minutos, C: 1.5 euros)" ];
+  2 -- 5 [ color="black" label="(T: 50.0 minutos, C: 5.0 euros)" ];
+  3 -- 4 [ color="black" label="(T: 30.0 minutos, C: 0.5 euros)" ];
+  4 -- 5 [ color="black" label="(T: 40.0 minutos, C: 0.8 euros)" ];
+  6 -- 2 [ color="black" label="(T: 150.0 minutos, C: 2.0 euros)" ];
+  6 -- 1 [ color="black" label="(T: 100.0 minutos, C: 2.0 euros)" ];
+  2 -- 4 [ color="black" label="(T: 50.0 minutos, C: 3.0 euros)" ];
+  1 -- 7 [ color="black" label="(T: 120.0 minutos, C: 1.8 euros)" ];
+  12 -- 5 [ color="black" label="(T: 20.0 minutos, C: 5.0 euros)" ];
+  2 -- 8 [ color="black" label="(T: 80.0 minutos, C: 1.2 euros)" ];
+  3 -- 9 [ color="black" label="(T: 90.0 minutos, C: 1.4 euros)" ];
+  11 -- 9 [ color="black" label="(T: 60.0 minutos, C: 6.0 euros)" ];
+  4 -- 10 [ color="black" label="(T: 60.0 minutos, C: 1.0 euros)" ];
+  5 -- 7 [ color="black" label="(T: 130.0 minutos, C: 1.9 euros)" ];
+  6 -- 9 [ color="black" label="(T: 110.0 minutos, C: 2.1 euros)" ];
+  7 -- 8 [ color="black" label="(T: 40.0 minutos, C: 0.7 euros)" ];
+  8 -- 9 [ color="black" label="(T: 50.0 minutos, C: 0.8 euros)" ];
+  9 -- 10 [ color="black" label="(T: 70.0 minutos, C: 1.1 euros)" ];
+  10 -- 1 [ color="black" label="(T: 150.0 minutos, C: 2.0 euros)" ];
+  6 -- 11 [ color="black" label="(T: 70.0 minutos, C: 4.5 euros)" ];
+  4 -- 12 [ color="black" label="(T: 20.0 minutos, C: 2.5 euros)" ];
+}

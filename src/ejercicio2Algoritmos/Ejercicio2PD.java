@@ -21,7 +21,7 @@ import us.lsi.graphs.virtual.EGraph;
 import us.lsi.graphs.virtual.EGraph.Type;
 import us.lsi.path.EGraphPath.PathType;
 
-public class Ejercicio2PDR {
+public class Ejercicio2PD {
 	public static final Integer EJERCICIO = 2;
 	public static final String FICHERO_SALIDA = "generated_files/ejercicio" + EJERCICIO + "/PDR_";
 	public static final String FICHERO = "resources/ejercicio" + EJERCICIO + "/";
@@ -91,11 +91,11 @@ public class Ejercicio2PDR {
 			// En el caso de que haya solucion, la paso como valores iniciales de PDR
 			SolucionCursos sVoraz = construirSolucion(optVoraz.get());
 			System.out.println(sVoraz);
-			return PDR.of(vg, Ejercicio2PDR::construirSolucion, optVoraz.get().getWeight(), optVoraz.get(), true);
+			return PDR.of(vg, Ejercicio2PD::construirSolucion, optVoraz.get().getWeight(), optVoraz.get(), true);
 		} else {
 			// En el caso de que no haya solucion, no puedo pasarle nada
 			System.out.println("No hay solución voraz.");
-			return PDR.of(vg, Ejercicio2PDR::construirSolucion, null, null, true);
+			return PDR.of(vg, Ejercicio2PD::construirSolucion, null, null, true);
 		}
 	}
 

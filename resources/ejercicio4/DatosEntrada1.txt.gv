@@ -1,0 +1,17 @@
+strict graph G {
+  1 [ color="black" label="Sol" ];
+  2 [ color="black" label="Callao" ];
+  3 [ color="black" label="Gran Via" ];
+  4 [ color="black" label="Principe Pio" ];
+  5 [ color="black" label="Chueca" ];
+  6 [ color="black" label="Nuevos Ministerios" ];
+  1 -- 2 [ color="black" label="(T: 150.0 minutos, C: 2.0 euros)" ];
+  1 -- 3 [ color="black" label="(T: 100.0 minutos, C: 1.5 euros)" ];
+  1 -- 5 [ color="black" label="(T: 150.0 minutos, C: 1.5 euros)" ];
+  2 -- 5 [ color="black" label="(T: 50.0 minutos, C: 5.0 euros)" ];
+  3 -- 4 [ color="black" label="(T: 30.0 minutos, C: 0.5 euros)" ];
+  4 -- 5 [ color="black" label="(T: 40.0 minutos, C: 0.8 euros)" ];
+  6 -- 2 [ color="black" label="(T: 150.0 minutos, C: 2.0 euros)" ];
+  6 -- 1 [ color="black" label="(T: 100.0 minutos, C: 2.0 euros)" ];
+  2 -- 4 [ color="black" label="(T: 50.0 minutos, C: 3.0 euros)" ];
+}

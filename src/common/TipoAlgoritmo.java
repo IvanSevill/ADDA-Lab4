@@ -1,5 +1,5 @@
 package common;
 
 public enum TipoAlgoritmo {
-	AStar, BT, PDR, PDR_MANUAL
+	AStar, BT, BT_MANUAL, PD, PDR, PDR_MANUAL
 }

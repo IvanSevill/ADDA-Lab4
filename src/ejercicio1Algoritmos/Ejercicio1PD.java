@@ -20,7 +20,7 @@ import us.lsi.graphs.virtual.EGraph;
 import us.lsi.graphs.virtual.EGraph.Type;
 import us.lsi.path.EGraphPath.PathType;
 
-public class Ejercicio1PDR {
+public class Ejercicio1PD {
 	public static final Integer EJERCICIO = 1;
 	public static final String FICHERO_SALIDA = "generated_files/ejercicio" + EJERCICIO + "/PDR_";
 	public static final String FICHERO = "resources/ejercicio" + EJERCICIO + "/";
