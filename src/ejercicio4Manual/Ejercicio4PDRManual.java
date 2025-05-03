@@ -1,14 +1,13 @@
-package ejercicio2Manual;
+package ejercicio4Manual;
 
 import common.AuxCommon;
-import common.DatosCursos;
+import common.DatosEstaciones;
 import common.TipoAlgoritmo;
-import ejercicio4Manual.EstacionesPDR;
+import ejercicio2Manual.CursoPDR;
 
+public class Ejercicio4PDRManual {
 
-public class Ejercicio2PDRManual {
-
-	public static final Integer EJERCICIO = 2;
+	public static final Integer EJERCICIO = 4;
 	public static final Integer NUM_ARCHIVOS = 3;
 	
 	public static void main(String[] args) {
@@ -18,9 +17,10 @@ public class Ejercicio2PDRManual {
 	}
 
 	private static void ejecutaPDRManual(int i) {
-		DatosCursos.iniDatos("resources/ejercicio"+EJERCICIO+"/DatosEntrada" + i + ".txt");
+		DatosEstaciones.iniDatos("resources/ejercicio"+EJERCICIO+"/DatosEntrada" + i + ".txt");
 		AuxCommon.imprimeCabeceraAlgoritmo("resources/ejercicio"+EJERCICIO+"/DatosEntrada" + i + ".txt", EJERCICIO,
 				TipoAlgoritmo.PDR_MANUAL);
 		System.out.println("Solucion obtenida: " + EstacionesPDR.search());
 	}
+	
 }

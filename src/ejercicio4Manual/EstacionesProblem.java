@@ -1,88 +1,88 @@
 package ejercicio4Manual;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import common.DatosEstaciones;
 import us.lsi.common.List2;
 
-public record EstacionesProblem(Integer indice, List<Integer> camino) {
+public class EstacionesProblem {
+
+	private List<Integer> camino;
+	private Integer actual;
+	private Set<Integer> visitados;
+
+	public EstacionesProblem(List<Integer> camino, Integer actual, Set<Integer> visitados) {
+		this.camino = camino;
+		this.actual = actual;
+		this.visitados = visitados;
+	}
 
 	public static EstacionesProblem initial() {
-		List<Integer> camino = List2.empty();
-		camino.add(0); // Nodo donde se inicia el camnino
-		return EstacionesProblem.of(0, camino);
+		List<Integer> camino = List2.of(0);
+		Set<Integer> visitados = new HashSet<>();
+		visitados.add(0);
+		return new EstacionesProblem(camino, 0, visitados);
 	}
 
-	public static EstacionesProblem of(Integer indice, List<Integer> camino) {
-		return new EstacionesProblem(indice, camino);
+	public List<Integer> getCamino() {
+		return camino;
 	}
 
-	public Boolean goal() {
-		return this.indice == DatosEstaciones.itemsNumber();
+	public Integer indice() {
+		return actual;
 	}
 
-	public Boolean goalHasSolution() {
-		return esSolucion();
+	public boolean goal() {
+		return visitados.size() == DatosEstaciones.itemsNumber()
+				&& actual == 0
+				&& camino.size() == DatosEstaciones.itemsNumber() + 1;
+	}
+
+	public boolean goalHasSolution() {
+		if (!goal()) return false;
+		double coste = DatosEstaciones.calcularCosteTrayectoCerrado(camino);
+		double limite = DatosEstaciones.getCosteTrayectoCompleto() * 0.75;
+		int numConsecSatisf = DatosEstaciones.calculaEstacionesConsecSatisf(camino);
+		return coste <= limite && numConsecSatisf > 0;
 	}
 
 	public List<Integer> actions() {
-		List<Integer> alternativas = List2.empty();
-
-		if (indice == DatosEstaciones.itemsNumber() - 1) {
-			Integer vin = camino.get(indice);
-			Integer vout = camino.get(0);
-			if (DatosEstaciones.existeTramo(vin, vout)) {
-				alternativas.add(vout);
-			}
-		} else if (indice < DatosEstaciones.itemsNumber()) {
-			Integer v = camino.get(indice);
-			Set<Integer> vecinos = DatosEstaciones.vecinos(v);
-			for (int i = 0; i < indice; i++) {
-				vecinos.remove(camino.get(i));
-			}
-			alternativas = List2.ofCollection(vecinos);
-
-		}
-
-		return alternativas;
-	}
-
-	private boolean esSolucion() {
-
-		if (!goal()) { // Esto es un parche para AStart
-			return false;
-		}
-		Double costeTrayectoCerrado = DatosEstaciones.calcularCosteTrayectoCerrado(camino);
-		Double costeTrayectoCompleto = DatosEstaciones.getCosteTrayectoCompleto();
-
-		if (costeTrayectoCerrado > 0.75 * costeTrayectoCompleto) {
-
-			return false;
-		}
-
-		Integer numEstacionesConsecSatisf = DatosEstaciones.calculaEstacionesConsecSatisf(camino);
-		if (numEstacionesConsecSatisf == 0) {
-			return false;
-		}
-
-		return true;
+		Set<Integer> vecinos = DatosEstaciones.vecinos(actual);
+		return vecinos.stream()
+				.filter(i -> !visitados.contains(i) || (visitados.size() == DatosEstaciones.itemsNumber() && i == 0))
+				.filter(i -> DatosEstaciones.existeTramo(actual, i))
+				.toList();
 	}
 
 	public EstacionesProblem neighbor(Integer a) {
-		List<Integer> caminoAux = List2.copy(camino);
-		caminoAux.add(a);
-		return EstacionesProblem.of(this.indice + 1, caminoAux);
+		List<Integer> nuevoCamino = List2.copy(camino);
+		Set<Integer> nuevosVisitados = new HashSet<>(visitados);
+		nuevoCamino.add(a);
+		if (a != 0) nuevosVisitados.add(a);
+		return new EstacionesProblem(nuevoCamino, a, nuevosVisitados);
 	}
 
-	public Double heuristic() {
-		Double h = 0.;
-		return h;
+	public double heuristic() {
+		int restantes = DatosEstaciones.itemsNumber() - visitados.size();
+		return restantes * DatosEstaciones.menorPesoArista;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof EstacionesProblem other)) return false;
+		return camino.equals(other.camino);
+	}
+
+	@Override
+	public int hashCode() {
+		return camino.hashCode();
 	}
 
 	@Override
 	public String toString() {
-		return "EstacionesVertexI [indice=" + indice + ", camino=" + camino + "]";
+		return "EstacionesProblem{" + "camino=" + camino + '}';
 	}
-
 }
