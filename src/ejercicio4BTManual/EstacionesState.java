@@ -4,7 +4,6 @@ import java.util.List;
 
 import common.DatosEstaciones;
 import ejercicio4.SolucionEstaciones;
-import ejercicio4PDRManual.EstacionesProblem;
 import us.lsi.common.List2;
 
 public class EstacionesState {

@@ -19,7 +19,7 @@ Este proyecto tiene como objetivo la resolución de problemas complejos mediante
    Se debe encontrar un camino que pase por todas las estaciones de tren exactamente una vez y regrese al origen, minimizando el tiempo total de viaje y el coste del trayecto, mientras cumple con otras restricciones como satisfacción de los clientes.
 
 ### Ejercicios Terminados
- - **Ejercicio 1** : AStar, BT, PD y PDR manual
- - **Ejercicio 2** : AStar, BT, PD y PDR manual
- - **Ejercicio 3** : -
- - **Ejercicio 4** : AStar, BT, PD, (en progreso) BT manual 
+- ✅ **Ejercicio 1**: AStar, BT, PD, PDR manual y BT manual
+- 🛠️ **Ejercicio 2**: AStar, BT, PD y PDR manual (en progreso)
+- ❌ **Ejercicio 3**: -
+- 🛠️ **Ejercicio 4**: AStar, BT, PD y BT manual (en progreso)
