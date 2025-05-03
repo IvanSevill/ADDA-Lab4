@@ -60,7 +60,7 @@ public class Ejercicio4BT {
 		System.out.println(s_as);
 		System.out.println(gp_as);
 
-		// No va
+		
 		// guardaGrafoSolucion(bt, FICHERO_SALIDA + id_fichero + ".gv");
 	}
 

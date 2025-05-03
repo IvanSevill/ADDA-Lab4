@@ -21,5 +21,5 @@ Este proyecto tiene como objetivo la resolución de problemas complejos mediante
 ### Ejercicios Terminados
 - ✅ **Ejercicio 1**: AStar, BT, PD, PDR manual y BT manual
 - ✅ **Ejercicio 2**: AStar, BT, PD y PDR manual y BT manual
-- ❌ **Ejercicio 3**: -
+- 🛠️ **Ejercicio 3**: AStar, BT, PD (Por terminar)
 - ✅ **Ejercicio 4**: AStar, BT, PD y PDR manual y BT manual

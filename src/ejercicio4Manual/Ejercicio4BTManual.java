@@ -10,7 +10,7 @@ public class Ejercicio4BTManual {
 
 	
 	public static void main(String[] args) {
-		for (Integer id_fichero = 1; id_fichero <= DatosCursos.ntest; id_fichero++) {
+		for (Integer id_fichero = 1; id_fichero <= AuxCommon.NUM_ARCHIVOS; id_fichero++) {
 			ejecutaBTManual(id_fichero);
 		}
 	}
