@@ -30,16 +30,17 @@ public class AlmacenState {
 
 	public void forward(Integer a) {
 		acciones.add(a);
+		acumulado = -actual.cantidadAlmacenada().doubleValue();  // Actualizamos correctamente el acumulado
+
 		anteriores.add(actual);
 		actual = actual.neighbor(a);
-		acumulado = -actual.cantidadAlmacenada().doubleValue();  // Actualizamos correctamente el acumulado
 	}
 
 	public void back() {
 		int last = acciones.size() - 1;
 		acciones.remove(last);
 		actual = anteriores.remove(last);
-		acumulado = -actual.cantidadAlmacenada().doubleValue();  // Recalculamos el acumulado
+		acumulado = +actual.cantidadAlmacenada().doubleValue();  // Recalculamos el acumulado
 	}
 
 	public List<Integer> alternativas() {
