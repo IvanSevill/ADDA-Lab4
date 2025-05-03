@@ -31,7 +31,7 @@ public class EstacionesState {
 	}
 
 	public void forward(Integer a) {
-		Integer v = actual.camino().get(actual.indice());
+		Integer v = actual.getCamino().get(actual.indice());
 		Double tiempoMedioTramo = 0.0;
 
 		if (actual.indice() < DatosEstaciones.itemsNumber()) {
@@ -47,9 +47,9 @@ public class EstacionesState {
 	public void back() {
 		int last = acciones.size() - 1;
 		var problemaAnterior = anteriores.get(last);
-		Integer a = actual.camino().get(actual.indice());
+		Integer a = actual.getCamino().get(actual.indice());
 
-		Integer v = problemaAnterior.camino().get(problemaAnterior.indice());
+		Integer v = problemaAnterior.getCamino().get(problemaAnterior.indice());
 		Double tiempoMedioTramo = 0.0;
 
 		if (actual.indice() < DatosEstaciones.itemsNumber()) {
@@ -73,13 +73,13 @@ public class EstacionesState {
 		
 		// Caso general
 		if (nextProblem.indice() < DatosEstaciones.itemsNumber()) {
-			Integer vin = actual.camino().get(actual.indice());
-			Integer vout = nextProblem.camino().get(nextProblem.indice());
+			Integer vin = actual.getCamino().get(actual.indice());
+			Integer vout = nextProblem.getCamino().get(nextProblem.indice());
 			tiempoMedioTramo = (double) DatosEstaciones.calculaTiempoMedioTramo(vin, vout);
 		// Caso final
 		} else {
-			Integer vin = actual.camino().get(actual.indice());
-			Integer vout = nextProblem.camino().get(0);
+			Integer vin = actual.getCamino().get(actual.indice());
+			Integer vout = nextProblem.getCamino().get(0);
 			tiempoMedioTramo = (double) DatosEstaciones.calculaTiempoMedioTramo(vin, vout);
 		}
 		
