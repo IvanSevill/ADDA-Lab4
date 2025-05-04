@@ -5,7 +5,7 @@ public class AuxCommon {
 	private static final Integer NUMERO_COMMON =140;
 	private static final String BLANCO = " ";
 	public static final String CARACTER = "-";
-	public static final Integer NUM_ARCHIVOS = 3;
+	public static final Integer NUM_ARCHIVOS = 2;
 
 	public static void imprimeCabecera(String input) {
 		separador(CARACTER, NUMERO_COMMON);

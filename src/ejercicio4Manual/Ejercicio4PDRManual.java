@@ -6,12 +6,10 @@ import common.TipoAlgoritmo;
 import ejercicio2Manual.CursoPDR;
 
 public class Ejercicio4PDRManual {
-
 	public static final Integer EJERCICIO = 4;
-	public static final Integer NUM_ARCHIVOS = 3;
 	
 	public static void main(String[] args) {
-		for (Integer id_fichero = 1; id_fichero <= NUM_ARCHIVOS; id_fichero++) {
+		for (Integer id_fichero = 1; id_fichero <= AuxCommon.NUM_ARCHIVOS; id_fichero++) {
 			ejecutaPDRManual(id_fichero);
 		}
 	}

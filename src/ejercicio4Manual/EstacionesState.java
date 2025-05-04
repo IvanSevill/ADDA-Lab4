@@ -91,7 +91,7 @@ public class EstacionesState {
 		return actual.goal() && actual.goalHasSolution();
 	}
 
-	public boolean esTerminal() {
+	public Boolean esTerminal() {
 		return actual.goal();
 	}
 

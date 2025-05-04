@@ -77,7 +77,7 @@ public record FestivalVertex(Integer indice, List<Integer> entradasAsignadas, In
 	}
 
 	@Override
-	public FestivalVertexInterface neighbor(Integer a) {
+	public FestivalVertex neighbor(Integer a) {
 		List<Integer> nuevasAsignaciones = List2.copy(entradasAsignadas);
 		nuevasAsignaciones.add(a);
 
