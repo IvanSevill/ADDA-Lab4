@@ -10,7 +10,7 @@ public class AlmacenBT {
 
 	public static void search() {
 		solucion = null;
-		mejorValor = Double.MAX_VALUE;
+		mejorValor = Double.MIN_VALUE;
 		estado = AlmacenState.initial();
 		bt_search();
 	}
@@ -18,13 +18,13 @@ public class AlmacenBT {
 	private static void bt_search() {
 		if (estado.esSolucion()) {
 			Double valorObtenido = estado.acumulado;
-			if (valorObtenido < mejorValor) {
+			if (valorObtenido > mejorValor) {
 				mejorValor = valorObtenido;
 				solucion = estado.getSolucion();
 			}
 		} else if (!estado.esTerminal()) {
 			for (Integer a : estado.alternativas()) {
-				if (estado.cota(a) < mejorValor) {
+				if (estado.cota(a) > mejorValor) {
 					estado.forward(a);
 					bt_search();
 					estado.back();

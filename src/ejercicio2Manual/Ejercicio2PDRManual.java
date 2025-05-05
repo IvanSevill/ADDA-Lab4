@@ -21,6 +21,6 @@ public class Ejercicio2PDRManual {
 		DatosCursos.iniDatos("resources/ejercicio"+EJERCICIO+"/DatosEntrada" + i + ".txt");
 		AuxCommon.imprimeCabeceraAlgoritmo("resources/ejercicio"+EJERCICIO+"/DatosEntrada" + i + ".txt", EJERCICIO,
 				TipoAlgoritmo.PDR_MANUAL);
-		System.out.println("Solucion obtenida: " + EstacionesPDR.search());
+		System.out.println("Solucion obtenida: " + CursoPDR.search());
 	}
 }

@@ -30,7 +30,7 @@ public class AlmacenState {
 
 	public void forward(Integer a) {
 		acciones.add(a);
-		acumulado = -actual.cantidadAlmacenada().doubleValue();  // Actualizamos correctamente el acumulado
+		acumulado = +actual.cantidadAlmacenada().doubleValue();  // Actualizamos correctamente el acumulado
 
 		anteriores.add(actual);
 		actual = actual.neighbor(a);
@@ -40,7 +40,7 @@ public class AlmacenState {
 		int last = acciones.size() - 1;
 		acciones.remove(last);
 		actual = anteriores.remove(last);
-		acumulado = +actual.cantidadAlmacenada().doubleValue();  // Recalculamos el acumulado
+		acumulado = -actual.cantidadAlmacenada().doubleValue();  // Recalculamos el acumulado
 	}
 
 	public List<Integer> alternativas() {
@@ -49,7 +49,7 @@ public class AlmacenState {
 
 	public Double cota(Integer a) {
 		AlmacenProblem vecino = actual.neighbor(a);
-		return -vecino.cantidadAlmacenada() + vecino.heuristic(); // Cota para maximizar cantidad almacenada
+		return +vecino.cantidadAlmacenada() + vecino.heuristic(); // Cota para maximizar cantidad almacenada
 	}
 
 	public boolean esSolucion() {
