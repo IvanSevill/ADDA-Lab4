@@ -50,7 +50,7 @@ public class Ejercicio1AStar {
 		EGraph<AlmacenVertexInterface, AlmacenEdge> virtualGraph = 
 				EGraph.virtual(start)
 				.pathType(PathType.Sum)
-				.type(Type.Min)
+				.type(Type.Max)
 				.edgeWeight(x -> x.weight())
 				.heuristic(AlmacenHeuristic::heuristic)
 				.build();

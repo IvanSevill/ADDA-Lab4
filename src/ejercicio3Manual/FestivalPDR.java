@@ -1,7 +1,6 @@
 package ejercicio3Manual;
 
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,65 +8,63 @@ import common.DatosFestival;
 import common.Spm;
 import ejercicio3.SolucionFestival;
 import us.lsi.common.List2;
+import us.lsi.common.Map2;
 
 public class FestivalPDR {
 
-	private static Map<FestivalProblem, Spm> memory;
-	private static double mejorValor;
+	public static Map<FestivalProblem, Spm> memory;
+	public static Integer mejorValor; // Estamos minimizando
 
 	public static SolucionFestival search() {
-		memory = new HashMap<>();
-		mejorValor = Double.MAX_VALUE;
-
-		pdr_search(FestivalProblem.initial(), 0);
-		return reconstruir();
+		memory = Map2.empty();
+		mejorValor = Integer.MAX_VALUE;
+		pdr_search(FestivalProblem.initial(), 0, memory);
+		return getSolution();
 	}
 
-	private static Spm pdr_search(FestivalProblem prob, int acumulado) {
-
-		if (memory.containsKey(prob))
-			return memory.get(prob);
-
-		boolean esMeta = prob.goal();
-		boolean esSolucion = esMeta && prob.goalHasSolution();
+	private static Spm pdr_search(FestivalProblem prob, Integer acumulado, Map<FestivalProblem, Spm> memoria) {
 		Spm res = null;
+		Boolean esTerminal = prob.goal();
+		Boolean esSolucion = prob.goalHasSolution();
 
-		if (esSolucion) {
-			res = Spm.of(null, acumulado);
-			mejorValor = Math.min(mejorValor, acumulado);
-		} else if (!esMeta) {
-			List<Spm> cand = List2.empty();
+		if (memory.containsKey(prob)) {
+			res = memory.get(prob);
+		} else if (esTerminal && esSolucion) {
+			res = Spm.of(null, 0);
+			memory.put(prob, res);
 
+			if (acumulado < mejorValor) {
+				mejorValor = acumulado;
+			}
+		} else {
+			List<Spm> soluciones = List2.empty();
 			for (Integer action : prob.actions()) {
-
-				double cota = acotar(acumulado, prob, action);
-				if (cota > mejorValor)
+				Double cota = acotar(acumulado, prob, action);
+				if (cota > mejorValor) { // Estamos minimizando
 					continue;
+				}
 
 				int pesoActual = DatosFestival.getCosteAsignacion(prob.tipoEntradaActual(), prob.areaActual()) * action;
-
 				FestivalProblem vecino = prob.neighbor(action);
-				Spm sHijo = pdr_search(vecino, acumulado + pesoActual);
 
-				if (sHijo != null)
-					cand.add(Spm.of(action, sHijo.weight()));
+				Spm s = pdr_search(vecino, acumulado + pesoActual, memory);
+				if (s != null) {
+					Spm amp = Spm.of(action, s.weight() + pesoActual);
+					soluciones.add(amp);
+				}
 			}
-			res = cand.stream().min(Comparator.naturalOrder()).orElse(null);
+			res = soluciones.stream().min(Comparator.naturalOrder()).orElse(null); // Minimizar
+			if (res != null) memory.put(prob, res);
 		}
-
-		if (res != null)
-			memory.put(prob, res);
 		return res;
 	}
 
-	/*----------- cota -----------*/
-	private static double acotar(int acum, FestivalProblem prob, int a) {
-		int pesoActual = DatosFestival.getCosteAsignacion(prob.tipoEntradaActual(), prob.areaActual()) * a;
-		return acum + pesoActual + prob.neighbor(a).noHeuristic();
+	private static Double acotar(Integer acum, FestivalProblem p, Integer a) {
+		int pesoActual = DatosFestival.getCosteAsignacion(p.tipoEntradaActual(), p.areaActual()) * a;
+		return acum + pesoActual + p.neighbor(a).noHeuristic();
 	}
 
-	/*----------- reconstrucción -----------*/
-	private static SolucionFestival reconstruir() {
+	private static SolucionFestival getSolution() {
 		List<Integer> acciones = List2.empty();
 		FestivalProblem p = FestivalProblem.initial();
 		Spm spm = memory.get(p);
@@ -77,6 +74,7 @@ public class FestivalPDR {
 			p = p.neighbor(spm.a());
 			spm = memory.get(p);
 		}
+
 		if (acciones.isEmpty())
 			throw new IllegalStateException("La búsqueda terminó sin encontrar solución factible.");
 

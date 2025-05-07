@@ -93,6 +93,13 @@ public class DatosFestival {
 		return DatosFestival.getTipoEntrada(i).cuotaMinima();
 	}
 
+	public static Integer getCosteMinimo() {
+		return tiposEntrada.stream()
+				.flatMap(i -> i.costeAsignacion().entrySet().stream())
+				.mapToInt(e -> e.getValue())
+				.min().orElse(Integer.MAX_VALUE);
+	}
+
 	public static void toConsole() {
 		String2.toConsole(areas, "Áreas");
 		String2.toConsole(tiposEntrada, "Tipos de Entrada");

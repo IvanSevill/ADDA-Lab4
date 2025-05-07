@@ -1,2 +1,381 @@
 strict digraph G {
+  1 [ label="P5
+Almacenes: [[0], [1, 2, 4], [3]]
+Espacios: [30, 0, 88]
+ Cantidad A: 5" ];
+  2 [ label="P4
+Almacenes: [[0, 3], [1], [2]]
+Espacios: [18, 55, 75]
+ Cantidad A: 4" ];
+  3 [ label="P4
+Almacenes: [[2], [1], [0, 3]]
+Espacios: [25, 55, 68]
+ Cantidad A: 4" ];
+  4 [ label="P5
+Almacenes: [[2, 3], [0], [1, 4]]
+Espacios: [13, 50, 55]
+ Cantidad A: 5" ];
+  5 [ label="P5
+Almacenes: [[1, 4], [0], [2, 3]]
+Espacios: [5, 50, 63]
+ Cantidad A: 5" ];
+  6 [ label="P4
+Almacenes: [[0], [2, 3], [1]]
+Espacios: [30, 33, 85]
+ Cantidad A: 4" ];
+  7 [ label="P5
+Almacenes: [[1, 4], [2, 3], [0]]
+Espacios: [5, 33, 80]
+ Cantidad A: 5" ];
+  8 [ label="P1
+Almacenes: [[], [0], []]
+Espacios: [50, 50, 100]
+ Cantidad A: 1" ];
+  9 [ label="P4
+Almacenes: [[0, 3], [], [1, 2]]
+Espacios: [18, 70, 60]
+ Cantidad A: 4" ];
+  10 [ label="P4
+Almacenes: [[1, 2], [], [0, 3]]
+Espacios: [10, 70, 68]
+ Cantidad A: 4" ];
+  11 [ label="P3
+Almacenes: [[0], [1, 2], []]
+Espacios: [30, 30, 100]
+ Cantidad A: 3" ];
+  12 [ label="P2
+Almacenes: [[], [0], [1]]
+Espacios: [50, 50, 85]
+ Cantidad A: 2" ];
+  13 [ label="P2
+Almacenes: [[1], [0], []]
+Espacios: [35, 50, 100]
+ Cantidad A: 2" ];
+  14 [ label="P4
+Almacenes: [[0, 3], [1, 2], []]
+Espacios: [18, 30, 100]
+ Cantidad A: 4" ];
+  15 [ label="P5
+Almacenes: [[0], [3], [1, 2, 4]]
+Espacios: [30, 58, 30]
+ Cantidad A: 5" ];
+  16 [ label="P4
+Almacenes: [[0], [1], [2, 3]]
+Espacios: [30, 55, 63]
+ Cantidad A: 4" ];
+  17 [ label="P3
+Almacenes: [[0], [2], [1]]
+Espacios: [30, 45, 85]
+ Cantidad A: 3" ];
+  18 [ label="P4
+Almacenes: [[0, 3], [2], [1]]
+Espacios: [18, 45, 85]
+ Cantidad A: 4" ];
+  19 [ label="P1
+Almacenes: [[], [], [0]]
+Espacios: [50, 70, 80]
+ Cantidad A: 1" ];
+  20 [ label="P0
+Almacenes: [[], [], []]
+Espacios: [50, 70, 100]
+ Cantidad A: 0" ];
+  21 [ label="P5
+Almacenes: [[4], [1, 2], [0, 3]]
+Espacios: [20, 30, 68]
+ Cantidad A: 5" ];
+  22 [ label="P4
+Almacenes: [[0], [1, 2], [3]]
+Espacios: [30, 30, 88]
+ Cantidad A: 4" ];
+  23 [ label="P3
+Almacenes: [[], [0], [1, 2]]
+Espacios: [50, 50, 60]
+ Cantidad A: 3" ];
+  24 [ label="P3
+Almacenes: [[1], [0], [2]]
+Espacios: [35, 50, 75]
+ Cantidad A: 3" ];
+  25 [ label="P5
+Almacenes: [[0, 3], [1], [2, 4]]
+Espacios: [18, 55, 45]
+ Cantidad A: 5" ];
+  26 [ label="P4
+Almacenes: [[], [0, 3], [1, 2]]
+Espacios: [50, 38, 60]
+ Cantidad A: 4" ];
+  27 [ label="P4
+Almacenes: [[1], [0, 3], [2]]
+Espacios: [35, 38, 75]
+ Cantidad A: 4" ];
+  28 [ label="P2
+Almacenes: [[], [1], [0]]
+Espacios: [50, 55, 80]
+ Cantidad A: 2" ];
+  29 [ label="P5
+Almacenes: [[0], [2, 3], [1, 4]]
+Espacios: [30, 33, 55]
+ Cantidad A: 5" ];
+  30 [ label="P5
+Almacenes: [[1, 4], [2], [0, 3]]
+Espacios: [5, 45, 68]
+ Cantidad A: 5" ];
+  31 [ label="P5
+Almacenes: [[0, 3], [], [1, 2, 4]]
+Espacios: [18, 70, 30]
+ Cantidad A: 5" ];
+  32 [ label="P2
+Almacenes: [[1], [], [0]]
+Espacios: [35, 70, 80]
+ Cantidad A: 2" ];
+  33 [ label="P5
+Almacenes: [[0, 3], [1, 2], [4]]
+Espacios: [18, 30, 70]
+ Cantidad A: 5" ];
+  34 [ label="P5
+Almacenes: [[3], [1, 2, 4], [0]]
+Espacios: [38, 0, 80]
+ Cantidad A: 5" ];
+  35 [ label="P4
+Almacenes: [[3], [0], [1, 2]]
+Espacios: [38, 50, 60]
+ Cantidad A: 4" ];
+  36 [ label="P5
+Almacenes: [[0, 3], [2], [1, 4]]
+Espacios: [18, 45, 55]
+ Cantidad A: 5" ];
+  37 [ label="P5
+Almacenes: [[], [1, 2, 4], [0, 3]]
+Espacios: [50, 0, 68]
+ Cantidad A: 5" ];
+  38 [ label="P5
+Almacenes: [[], [0, 3], [1, 2, 4]]
+Espacios: [50, 38, 30]
+ Cantidad A: 5" ];
+  39 [ label="P5
+Almacenes: [[1], [0, 3], [2, 4]]
+Espacios: [35, 38, 45]
+ Cantidad A: 5" ];
+  40 [ label="P4
+Almacenes: [[1], [0], [2, 3]]
+Espacios: [35, 50, 63]
+ Cantidad A: 4" ];
+  41 [ label="P4
+Almacenes: [[1], [2, 3], [0]]
+Espacios: [35, 33, 80]
+ Cantidad A: 4" ];
+  42 [ label="P5
+Almacenes: [[1], [2, 4], [0, 3]]
+Espacios: [35, 15, 68]
+ Cantidad A: 5" ];
+  43 [ label="P3
+Almacenes: [[], [1, 2], [0]]
+Espacios: [50, 30, 80]
+ Cantidad A: 3" ];
+  44 [ label="P3
+Almacenes: [[2], [0], [1]]
+Espacios: [25, 50, 85]
+ Cantidad A: 3" ];
+  45 [ label="P3
+Almacenes: [[1, 2], [0], []]
+Espacios: [10, 50, 100]
+ Cantidad A: 3" ];
+  46 [ label="P4
+Almacenes: [[3], [1, 2], [0]]
+Espacios: [38, 30, 80]
+ Cantidad A: 4" ];
+  47 [ label="P5
+Almacenes: [[2, 3], [1, 4], [0]]
+Espacios: [13, 25, 80]
+ Cantidad A: 5" ];
+  48 [ label="P3
+Almacenes: [[1], [2], [0]]
+Espacios: [35, 45, 80]
+ Cantidad A: 3" ];
+  49 [ label="P4
+Almacenes: [[2], [0, 3], [1]]
+Espacios: [25, 38, 85]
+ Cantidad A: 4" ];
+  50 [ label="P4
+Almacenes: [[1, 2], [0, 3], []]
+Espacios: [10, 38, 100]
+ Cantidad A: 4" ];
+  51 [ label="P5
+Almacenes: [[3], [0], [1, 2, 4]]
+Espacios: [38, 50, 30]
+ Cantidad A: 5" ];
+  52 [ label="P1
+Almacenes: [[0], [], []]
+Espacios: [30, 70, 100]
+ Cantidad A: 1" ];
+  53 [ label="P3
+Almacenes: [[2], [1], [0]]
+Espacios: [25, 55, 80]
+ Cantidad A: 3" ];
+  54 [ label="P2
+Almacenes: [[0], [1], []]
+Espacios: [30, 55, 100]
+ Cantidad A: 2" ];
+  55 [ label="P4
+Almacenes: [[], [1, 2], [0, 3]]
+Espacios: [50, 30, 68]
+ Cantidad A: 4" ];
+  56 [ label="P5
+Almacenes: [[4], [0, 3], [1, 2]]
+Espacios: [20, 38, 60]
+ Cantidad A: 5" ];
+  57 [ label="P5
+Almacenes: [[1, 4], [0, 3], [2]]
+Espacios: [5, 38, 75]
+ Cantidad A: 5" ];
+  58 [ label="P5
+Almacenes: [[2], [1, 4], [0, 3]]
+Espacios: [25, 25, 68]
+ Cantidad A: 5" ];
+  59 [ label="P5
+Almacenes: [[0, 3], [1, 4], [2]]
+Espacios: [18, 25, 75]
+ Cantidad A: 5" ];
+  60 [ label="P4
+Almacenes: [[2, 3], [0], [1]]
+Espacios: [13, 50, 85]
+ Cantidad A: 4" ];
+  61 [ label="P3
+Almacenes: [[1, 2], [], [0]]
+Espacios: [10, 70, 80]
+ Cantidad A: 3" ];
+  62 [ label="P2
+Almacenes: [[0], [], [1]]
+Espacios: [30, 70, 85]
+ Cantidad A: 2" ];
+  63 [ label="P4
+Almacenes: [[1], [2], [0, 3]]
+Espacios: [35, 45, 68]
+ Cantidad A: 4" ];
+  64 [ label="P4
+Almacenes: [[1, 2], [3], [0]]
+Espacios: [10, 58, 80]
+ Cantidad A: 4" ];
+  65 [ label="P5
+Almacenes: [[0, 3], [4], [1, 2]]
+Espacios: [18, 40, 60]
+ Cantidad A: 5" ];
+  66 [ label="P5
+Almacenes: [[1, 2], [4], [0, 3]]
+Espacios: [10, 40, 68]
+ Cantidad A: 5" ];
+  67 [ label="P3
+Almacenes: [[0], [1], [2]]
+Espacios: [30, 55, 75]
+ Cantidad A: 3" ];
+  68 [ label="P5
+Almacenes: [[0, 3], [1, 2, 4], []]
+Espacios: [18, 0, 100]
+ Cantidad A: 5" ];
+  69 [ label="P4
+Almacenes: [[2, 3], [1], [0]]
+Espacios: [13, 55, 80]
+ Cantidad A: 4" ];
+  70 [ label="P5
+Almacenes: [[2], [0, 3], [1, 4]]
+Espacios: [25, 38, 55]
+ Cantidad A: 5" ];
+  71 [ label="P5
+Almacenes: [[1, 2], [0, 3], [4]]
+Espacios: [10, 38, 70]
+ Cantidad A: 5" ];
+  72 [ label="P5
+Almacenes: [[0], [1, 4], [2, 3]]
+Espacios: [30, 25, 63]
+ Cantidad A: 5" ];
+  73 [ label="P4
+Almacenes: [[1, 2], [0], [3]]
+Espacios: [10, 50, 88]
+ Cantidad A: 4" ];
+  74 [ label="P3
+Almacenes: [[0], [], [1, 2]]
+Espacios: [30, 70, 60]
+ Cantidad A: 3" ];
+  75 [ label="P5
+Almacenes: [[0, 3], [2, 4], [1]]
+Espacios: [18, 15, 85]
+ Cantidad A: 5" ];
+  76 [ label="P4
+Almacenes: [[0], [3], [1, 2]]
+Espacios: [30, 58, 60]
+ Cantidad A: 4" ];
+  22 -> 1 [ label="A1" ];
+  67 -> 2 [ label="A0" ];
+  53 -> 3 [ label="A2" ];
+  60 -> 4 [ label="A2" ];
+  40 -> 5 [ label="A0" ];
+  17 -> 6 [ label="A1" ];
+  41 -> 7 [ label="A0" ];
+  20 -> 8 [ label="A1" ];
+  74 -> 9 [ label="A0" ];
+  61 -> 10 [ label="A2" ];
+  54 -> 11 [ label="A1" ];
+  8 -> 12 [ label="A2" ];
+  8 -> 13 [ label="A0" ];
+  11 -> 14 [ label="A0" ];
+  76 -> 15 [ label="A2" ];
+  67 -> 16 [ label="A2" ];
+  62 -> 17 [ label="A1" ];
+  17 -> 18 [ label="A0" ];
+  20 -> 19 [ color="red" label="A2" ];
+  55 -> 21 [ label="A0" ];
+  11 -> 22 [ label="A2" ];
+  12 -> 23 [ label="A2" ];
+  13 -> 24 [ label="A2" ];
+  2 -> 25 [ label="A2" ];
+  23 -> 26 [ label="A1" ];
+  24 -> 27 [ label="A1" ];
+  19 -> 28 [ color="red" label="A1" ];
+  6 -> 29 [ label="A2" ];
+  63 -> 30 [ label="A0" ];
+  9 -> 31 [ label="A2" ];
+  19 -> 32 [ label="A0" ];
+  14 -> 33 [ label="A2" ];
+  46 -> 34 [ label="A1" ];
+  23 -> 35 [ label="A0" ];
+  18 -> 36 [ label="A2" ];
+  55 -> 37 [ color="red" label="A1" ];
+  26 -> 38 [ label="A2" ];
+  27 -> 39 [ label="A2" ];
+  24 -> 40 [ label="A2" ];
+  48 -> 41 [ label="A1" ];
+  63 -> 42 [ label="A1" ];
+  28 -> 43 [ color="red" label="A1" ];
+  12 -> 44 [ label="A0" ];
+  13 -> 45 [ label="A0" ];
+  43 -> 46 [ label="A0" ];
+  69 -> 47 [ label="A1" ];
+  32 -> 48 [ label="A1" ];
+  44 -> 49 [ label="A1" ];
+  45 -> 50 [ label="A1" ];
+  35 -> 51 [ label="A2" ];
+  20 -> 52 [ label="A0" ];
+  28 -> 53 [ label="A0" ];
+  52 -> 54 [ label="A1" ];
+  43 -> 55 [ color="red" label="A2" ];
+  26 -> 56 [ label="A0" ];
+  27 -> 57 [ label="A0" ];
+  3 -> 58 [ label="A1" ];
+  2 -> 59 [ label="A1" ];
+  44 -> 60 [ label="A0" ];
+  32 -> 61 [ label="A0" ];
+  52 -> 62 [ label="A2" ];
+  48 -> 63 [ label="A2" ];
+  61 -> 64 [ label="A1" ];
+  9 -> 65 [ label="A1" ];
+  10 -> 66 [ label="A1" ];
+  54 -> 67 [ label="A2" ];
+  14 -> 68 [ label="A1" ];
+  53 -> 69 [ label="A0" ];
+  49 -> 70 [ label="A2" ];
+  50 -> 71 [ label="A2" ];
+  16 -> 72 [ label="A1" ];
+  45 -> 73 [ label="A2" ];
+  62 -> 74 [ label="A2" ];
+  18 -> 75 [ label="A1" ];
+  74 -> 76 [ label="A1" ];
 }
